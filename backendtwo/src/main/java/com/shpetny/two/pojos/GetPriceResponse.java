@@ -2,12 +2,10 @@ package com.shpetny.two.pojos;
 
 import com.shpetny.two.Price;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name="", propOrder={"price"})
 @XmlRootElement(name = "getPriceResponse")
 public class GetPriceResponse {
 

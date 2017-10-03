@@ -1,24 +1,19 @@
 package com.shpetny.backendusers.models;
 
-
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class User {
 
-    // TODO Возможно довить еще полей
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String login;
     private String password;
-    @ElementCollection(targetClass = Long.class)
-    private List<Long> productsId;
-
+    private long cartId;
     private Role role;
-
-    // История покупок
+    private long purchaseHistoryId;
 
     public User() {
     }

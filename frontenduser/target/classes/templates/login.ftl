@@ -1,21 +1,55 @@
 <#import "layout.ftl" as u>
 <@u.page title="/users/login">
+<h1>Login Form</h1>
+<div class="form-inline">
+    <div class="form-group">
+        <label class="sr-only" for="exampleInputEmail3">Email address</label>
+        <input type="email" class="form-control" id="login" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="exampleInputPassword3">Password</label>
+        <input type="password" class="form-control" id="password1" placeholder="Password">
+    </div>
 
-<form action="http://localhost:8090/users/login" method="post">
-    <#--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
-    <div>
-        <label for="username">Email address</label>
-        <input type="text" name="login" id="login" required autofocus>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox"> Remember me
+        </label>
     </div>
-    <div>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required>
-    </div>
-    <div>
-        <label for="remember-me">Remember me</label>
-        <input type="checkbox" name="remember-me" id="remember-me">
-    </div>
-    <button type="submit">Sign in</button>
-</form>
+    <button onclick="submit()" class="btn btn-default">Login</button>
+</div>
 
+<script>
+    function submit() {
+        var formData = {};
+        formData['login'] = document.getElementById("login");
+        formData['password'] = document.getElementById("password1");
+        var myURL = 'http://localhost:8090/users/login';
+
+        $.ajax({
+            type: "POST",
+            data: JSON.stringify(formData),
+            url: myURL,
+            dataType: 'json',
+            contentType : 'application/json',
+            complete : function(data) {
+                var result = data.responseText;
+                document.getElementById("result").innerHTML = result;
+                console.log(result);
+            }
+        });
+    }
+
+
+    function clearForm() {
+        var inputList = document.getElementsByTagName("input");
+        for (i = 0; i < inputList.length; i++) {
+            inputList[i].value = "";
+        }
+        try {
+            document.getElementById("result").innerHTML = "";
+        } catch (err) {
+        }
+    }
+</script>
 </@u.page>

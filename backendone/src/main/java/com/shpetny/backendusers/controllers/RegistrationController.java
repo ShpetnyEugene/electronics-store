@@ -1,12 +1,11 @@
 package com.shpetny.backendusers.controllers;
 
+import com.shpetny.backendusers.models.User;
 import com.shpetny.backendusers.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author Shpetny Eugene
@@ -24,8 +23,11 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public void registerUser(@RequestParam("login") String login,
-                             @RequestParam("password") String password) {
-        userService.createUser(login, password);
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    public User registerUser(@RequestBody User user) {
+        User user1 = user;
+        userService.toString();
+        return user;
     }
 }

@@ -22,6 +22,8 @@ public class LoginController {
     @PostMapping
     public String login(@RequestParam("login") String login,
                         @RequestParam("password") String password) {
+        password.isEmpty();
+        login.isEmpty();
         return null;
     }
 
