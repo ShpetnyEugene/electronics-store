@@ -10,13 +10,42 @@ public class Application {
     }
 }
 
+// Удалить PRICE - из BACKEND 1
+
 // Вопросы :
+
+// Controller vs RestController
+// TODO Pagenas to backeen
+// Как собрать maven отдельные варианты
+
+// 0. Spring Безопастность
+
+// TODO Cors Filter
+// 1. Сессии на spring ?
+// TODO HtttpSession
+
+// 2. БД ?
+
+
+// 3. Почему не срабатывает ?
+
+
+
+
+
+
+
+
+
+
+
+
 
 // 1. Насчет БД... Правильно ли сформировал таблицу продукт, как хранить историю покупок
 //
 
 
-// 2. Пока я отравляю по полному URL
+// 2. Пока я отравляю по  полному URL
 // Вставить изи application.properties
 
 // 3. Почему когда я ложу БД, удаляются данные

@@ -11,13 +11,6 @@ html {
     min-height: 100%;
 }
 
-
-body {
-    padding-top: 70px;
-    padding-bottom: 30px;
-    margin-bottom: 60px;
-}
-
 body,
 .navbar-fixed-top,
 .navbar-fixed-bottom {

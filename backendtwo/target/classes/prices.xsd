@@ -21,12 +21,12 @@
         <xs:sequence>
             <xs:element name="id" type="xs:long"/>
             <xs:element name="value" type="xs:double"/>
-            <xs:element name="productsId" type="valueList"/>
+            <!--<xs:element name="productsId" type="valueList"/>-->
         </xs:sequence>
     </xs:complexType>
 
-    <xs:simpleType name="valueList">
-        <xs:list itemType="xs:long"/>
-    </xs:simpleType>
+    <!--<xs:simpleType name="valueList">-->
+        <!--<xs:list itemType="xs:long"/>-->
+    <!--</xs:simpleType>-->
 
 </xs:schema>

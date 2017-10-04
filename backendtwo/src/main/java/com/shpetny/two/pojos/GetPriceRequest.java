@@ -1,15 +1,16 @@
 package com.shpetny.two.pojos;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {"id"})
+@XmlType(name = "", propOrder = {
+        "id"
+})
 @XmlRootElement(name = "getPriceRequest")
+
 public class GetPriceRequest {
 
+    @XmlElement(required = true)
     protected long id;
 
     /**

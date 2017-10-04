@@ -27,19 +27,21 @@
 </div>
 
 <script>
+
     function submit() {
         var formData = {};
-        formData['login'] = document.getElementById("login");
-        formData['password'] = document.getElementById("password2");
+        formData['login'] = document.getElementById("login").value;
+        formData['password'] = document.getElementById("password2").value;
         var myURL = 'http://localhost:8090/users/registration';
-
         $.ajax({
             type: "POST",
             data: JSON.stringify(formData),
             url: myURL,
             dataType: 'json',
-            contentType : 'application/json',
-            complete : function(data) {
+//            crossDomain: true,
+            contentType: 'application/json',
+//            origin: 'http://localhost:8090'
+            complete: function (data) {
                 var result = data.responseText;
                 document.getElementById("result").innerHTML = result;
                 console.log(result);
@@ -56,7 +58,6 @@
         try {
             document.getElementById("result").innerHTML = "";
         } catch (err) {
-            t
         }
     }
 </script>

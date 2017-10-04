@@ -17,6 +17,7 @@
         </label>
     </div>
     <button onclick="submit()" class="btn btn-default">Login</button>
+    <button onclick="clearForm()" class="btn btn-default">Clear form</button>
 </div>
 
 <script>

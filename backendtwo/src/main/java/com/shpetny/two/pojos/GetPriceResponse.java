@@ -5,11 +5,11 @@ import com.shpetny.two.Price;
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name="", propOrder={"price"})
+@XmlType(name="", propOrder="price")
 @XmlRootElement(name = "getPriceResponse")
 public class GetPriceResponse {
 
-    @XmlElement(required = true)
+    @XmlElement(required = true, name = "Price")
     protected Price price;
 
     public Price getPrice() {

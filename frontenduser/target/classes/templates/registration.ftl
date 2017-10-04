@@ -2,10 +2,12 @@
 <@u.page title="Registration">
 <h1>Registration Form</h1>
 <div class="form-inline">
+
     <div class="form-group">
         <label class="sr-only" for="exampleInputEmail3">Email address</label>
         <input type="email" class="form-control" id="login" placeholder="Email">
     </div>
+
     <div class="form-group">
         <label class="sr-only" for="exampleInputPassword3">Password</label>
         <input type="password" class="form-control" id="password1" placeholder="Password">
@@ -21,22 +23,25 @@
         </label>
     </div>
     <button onclick="submit()" class="btn btn-default">Registration</button>
+    <button onclick="clearForm()" class="btn btn-default">Clear form</button>
 </div>
 
 <script>
+
     function submit() {
         var formData = {};
-        formData['login'] = document.getElementById("login");
-        formData['password'] = document.getElementById("password2");
+        formData['login'] = document.getElementById("login").value;
+        formData['password'] = document.getElementById("password2").value;
         var myURL = 'http://localhost:8090/users/registration';
-
         $.ajax({
             type: "POST",
             data: JSON.stringify(formData),
             url: myURL,
             dataType: 'json',
-            contentType : 'application/json',
-            complete : function(data) {
+//            crossDomain: true,
+            contentType: 'application/json',
+//            origin: 'http://localhost:8090'
+            complete: function (data) {
                 var result = data.responseText;
                 document.getElementById("result").innerHTML = result;
                 console.log(result);
