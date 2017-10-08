@@ -1,5 +1,6 @@
 package com.shpetny.backendusers.services;
 
+import com.shpetny.backendusers.models.Role;
 import com.shpetny.backendusers.models.User;
 import com.shpetny.backendusers.persistance.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class UserService {
     }
 
     public void createUser(String login, String password) {
-        repository.save(new User("3434", "df"));
+        repository.save(new User(login,password, Role.USER));
     }
 
     public List<User> getAllUsers() {

@@ -23,10 +23,10 @@
 
 
 
-        <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-security</artifactId>-->
+        <!--</dependency>-->
 
     </dependencies>
 
@@ -54,10 +54,12 @@
                 </executions>
                 <configuration>
                     <schemaLanguage>WSDL</schemaLanguage>
-                    <generatePackage>hello.wsdl</generatePackage>
+                    <generatePackage>com.shpetny.backendusers.pojos</generatePackage>
+                    <generateDirectory>src/main/java</generateDirectory>
+
                     <schemas>
                         <schema>
-                            <url>http://www.webservicex.com/stockquote.asmx?WSDL</url>
+                            <url>hhttp://www.webservicex.com/stockquote.asmx?WSDL</url>
                         </schema>
                     </schemas>
                 </configuration>

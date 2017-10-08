@@ -29,6 +29,11 @@
 <script>
 
     function submit() {
+        if (document.getElementById("password2").value !== document.getElementById("password1").value){
+            clearForm();
+            return;
+        }
+
         var formData = {};
         formData['login'] = document.getElementById("login").value;
         formData['password'] = document.getElementById("password2").value;
@@ -38,9 +43,7 @@
             data: JSON.stringify(formData),
             url: myURL,
             dataType: 'json',
-//            crossDomain: true,
             contentType: 'application/json',
-//            origin: 'http://localhost:8090'
             complete: function (data) {
                 var result = data.responseText;
                 document.getElementById("result").innerHTML = result;

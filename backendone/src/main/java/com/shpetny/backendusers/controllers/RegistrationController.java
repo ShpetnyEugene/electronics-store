@@ -4,14 +4,13 @@ import com.shpetny.backendusers.models.User;
 import com.shpetny.backendusers.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 /**
  * @author Shpetny Eugene
  * @version 1.0
  */
-@Controller
+@RestController
 @RequestMapping("/users/registration")
 public class RegistrationController {
 
@@ -23,11 +22,9 @@ public class RegistrationController {
     }
 
     @PostMapping
-    @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
     public User registerUser(@RequestBody User user) {
-        User user1 = user;
-        userService.toString();
+        userService.createUser(user.getLogin(), user.getPassword());
         return user;
     }
 }

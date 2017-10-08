@@ -11,11 +11,16 @@ public class User {
     private long id;
     private String login;
     private String password;
-    private long cartId;
     private Role role;
-    private long purchaseHistoryId;
+
 
     public User() {
+    }
+
+    public User(String login, String password, Role role) {
+        this.login = login;
+        this.password = password;
+        this.role = role;
     }
 
     public User(String login, String password) {
@@ -27,11 +32,23 @@ public class User {
         return login;
     }
 
-    public Role getRole() {
-        return role;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

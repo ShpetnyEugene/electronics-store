@@ -32,17 +32,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .antMatchers("/resources/**", "/users/registration").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/users/login")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll()
-                .and()
+//                .authorizeRequests()
+//                .antMatchers("/resources/**", "/users/registration").permitAll()
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .loginPage("/users/login")
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .permitAll()
+//                .and()
                 .cors().disable()
                 .csrf().disable();
 

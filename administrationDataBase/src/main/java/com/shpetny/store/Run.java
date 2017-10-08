@@ -1,7 +1,11 @@
 package com.shpetny.store;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
 public class Run {
     public static void main(String[] args) {
-        // TODO CREATE OBJECT MENU
+        SpringApplication.run(Run.class,args);
     }
 }

@@ -6,8 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/users/login")
 public class LoginController {
 
@@ -22,8 +23,7 @@ public class LoginController {
     @PostMapping
     public String login(@RequestParam("login") String login,
                         @RequestParam("password") String password) {
-        password.isEmpty();
-        login.isEmpty();
+
         return null;
     }
 

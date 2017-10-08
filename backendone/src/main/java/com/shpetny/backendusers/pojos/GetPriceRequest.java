@@ -1,6 +1,16 @@
 package com.shpetny.backendusers.pojos;
 
+import javax.xml.bind.annotation.*;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder = {
+        "id"
+})
+@XmlRootElement(name = "getPriceRequest")
+
 public class GetPriceRequest {
+    @XmlElement(required = true)
+
     protected long id;
 
     /**

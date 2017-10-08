@@ -1,16 +1,18 @@
 package com.shpetny.backendusers.controllers;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
+import com.shpetny.backendusers.models.Product;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/products/{[productName}")
 public class ProductController {
 
     @PutMapping
-    public void updateProduct(){
+    public void updateProduct(@RequestBody Product product) {
+
         // TODO
     }
 }

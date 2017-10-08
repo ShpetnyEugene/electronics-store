@@ -8,6 +8,7 @@ public class ProductType {
     @Id
     private long id;
     private String name;
+    private long productId;
 
     public ProductType(long id, String name) {
         this.id = id;

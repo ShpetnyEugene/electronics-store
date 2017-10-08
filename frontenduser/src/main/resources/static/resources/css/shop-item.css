@@ -1,0 +1,25 @@
+body {
+    padding-top: 54px;
+}
+
+.card-img-top {
+    width: 100%;
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+    }
+}

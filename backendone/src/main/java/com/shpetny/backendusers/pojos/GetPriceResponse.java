@@ -2,10 +2,14 @@ package com.shpetny.backendusers.pojos;
 
 import com.shpetny.backendusers.models.Price;
 
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.*;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name="", propOrder="price")
+@XmlRootElement(name = "getPriceResponse")
 public class GetPriceResponse {
     @XmlElement(required = true)
+
     protected Price price;
 
     public Price getPrice() {

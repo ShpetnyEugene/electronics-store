@@ -6,20 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="Layout for all pages">
+    <meta name="Shpetny Eugene">
 
     <title>${title}</title>
 
     <!-- Bootstrap core CSS -->
+    <link href="/resources/css/shop-item.css" rel="stylesheet">
+    <link href="/resources/css/heroic-features.css" rel="stylesheet">
+    <link href="/resources/css/shop-homepage.css" rel="stylesheet">
+    <link href="/resources/css/shop-homepage.css" rel="stylesheet">
     <link href="/resources/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <#--<link href="/resources/assets/bootstrap/css/bootstrap-reboot.min.css" rel="stylesheet">-->
+    <link href="/resources/assets/bootstrap/css/bootstrap-grid.min.css" rel="stylesheet">
     <link href="/resources/assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
 
 <#--<!-- IE10 viewport hack for Surface/desktop Windows 8 bug &ndash;&gt;-->
 <#--<link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">-->
 
     <!-- Custom styles for this template -->
-    <link href="/resources/css/style.css" rel="stylesheet">
+<#--<link href="/resources/css/style.css" rel="stylesheet">-->
 
 <#--<!-- Just for debugging purposes. Don't actually copy these 2 lines! &ndash;&gt;-->
 <#--<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]&ndash;&gt;-->
@@ -33,7 +39,7 @@
 
     <title>${title}</title>
 </head>
-<body>
+<body style="padding: 0">
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -51,7 +57,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                <li><a href="/products">Catalog <span class="sr-only">(current)</span></a></li>
                 <li><a href="#">Link</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -90,9 +96,13 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <#nested>
-</div>
+
+<footer>
+    <hr>
+    <h3 style="text-align: center">Created by Shpetny Eugene</h3>
+</footer>
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -100,6 +110,8 @@
 <script src="/resources/assets/jquery/jquery-3.1.1.min.js"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="/resources/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="/resources/assets/popper/popper.min.js"></script>
+
 <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 <#--<script src="../../assets/js/vendor/holder.min.js"></script>-->
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
