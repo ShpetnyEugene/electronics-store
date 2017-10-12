@@ -7,10 +7,9 @@ import javax.xml.bind.annotation.*;
         "id"
 })
 @XmlRootElement(name = "getPriceRequest")
-
 public class GetPriceRequest {
 
-    @XmlElement(required = true)
+    @XmlElement
     protected long id;
 
     /**

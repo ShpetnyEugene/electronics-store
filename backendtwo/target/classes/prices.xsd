@@ -1,4 +1,4 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns= "soap-products"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            targetNamespace="soap-products" elementFormDefault="qualified">
 
     <xs:element name="getPriceRequest">
@@ -9,24 +9,36 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="getPriceResponse">
+
+    <xs:element name="updatePriceRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="price" type="price"/>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="value" type="xs:double"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
+
+    <xs:element name="getPriceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="price" type="valueList"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="valueList">
+        <xs:list itemType="price"/>
+    </xs:simpleType>
 
     <xs:complexType name="price">
         <xs:sequence>
             <xs:element name="id" type="xs:long"/>
             <xs:element name="value" type="xs:double"/>
-            <!--<xs:element name="productsId" type="valueList"/>-->
+            <xs:element name="productsId" type="xs:long"/>
         </xs:sequence>
     </xs:complexType>
 
-    <!--<xs:simpleType name="valueList">-->
-        <!--<xs:list itemType="xs:long"/>-->
-    <!--</xs:simpleType>-->
 
 </xs:schema>

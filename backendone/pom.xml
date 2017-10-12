@@ -12,21 +12,21 @@
     <artifactId>back-end-one-users</artifactId>
 
     <dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web-services</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>wsdl4j</groupId>
+        <artifactId>wsdl4j</artifactId>
+    </dependency>
+
+
+
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web-services</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        <dependency>
-            <groupId>wsdl4j</groupId>
-            <artifactId>wsdl4j</artifactId>
-        </dependency>
-
-
-
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-security</artifactId>-->
-        <!--</dependency>-->
 
     </dependencies>
 
@@ -59,7 +59,7 @@
 
                     <schemas>
                         <schema>
-                            <url>hhttp://www.webservicex.com/stockquote.asmx?WSDL</url>
+                            <url>http://www.webservicex.com/stockquote.asmx?WSDL</url>
                         </schema>
                     </schemas>
                 </configuration>

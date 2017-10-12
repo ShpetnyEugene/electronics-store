@@ -1,7 +1,5 @@
 package com.shpetny.backendusers.pojos;
 
-import com.shpetny.backendusers.models.Price;
-
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)

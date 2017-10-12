@@ -13,13 +13,17 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/resources/css/shop-item.css" rel="stylesheet">
-    <link href="/resources/css/heroic-features.css" rel="stylesheet">
-    <link href="/resources/css/shop-homepage.css" rel="stylesheet">
-    <link href="/resources/css/shop-homepage.css" rel="stylesheet">
     <link href="/resources/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <#--<link href="/resources/assets/bootstrap/css/bootstrap-reboot.min.css" rel="stylesheet">-->
+    <link href="/resources/assets/easy-autocomplete/easy-autocomplete.css" rel="stylesheet">
+    <link href="/resources/assets/easy-autocomplete/easy-autocomplete.themes.css" rel="stylesheet">
+
     <link href="/resources/assets/bootstrap/css/bootstrap-grid.min.css" rel="stylesheet">
     <link href="/resources/assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+
+
+    <script src="/resources/assets/jquery/jquery-3.1.1.min.js"></script>
+    <script src="/resources/assets/easy-autocomplete/jquery.easy-autocomplete.js"></script>
+
 
 <#--<!-- IE10 viewport hack for Surface/desktop Windows 8 bug &ndash;&gt;-->
 <#--<link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">-->
@@ -73,12 +77,9 @@
                     </ul>
                 </li>
             </ul>
-            <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+
+            <input id="template-custom"/>
+
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Link</a></li>
                 <li class="dropdown">
@@ -104,13 +105,31 @@
 </footer>
 
 
+<script>
+    var options = {
+                url: "http://localhost:8090/products",
+                getValue: "name",
+                template: {
+                    type: "custom", method: function (value, item) {
+                        console.log(item);
+                        return "<img src='"  + "' /> | " + item.getName() + " | " + item.getDescription();
+                    }
+                }
+            };
+
+
+    console.log(options);
+    $("#template-custom").easyAutocomplete(options);
+
+</script>
+
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="/resources/assets/jquery/jquery-3.1.1.min.js"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="/resources/assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="/resources/assets/popper/popper.min.js"></script>
+
 
 <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 <#--<script src="../../assets/js/vendor/holder.min.js"></script>-->

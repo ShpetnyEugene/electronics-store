@@ -1,21 +1,24 @@
 package com.shpetny.backendusers.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class ProductType {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
     private long productId;
 
-    public ProductType(long id, String name) {
-        this.id = id;
-        this.name = name;
+    public ProductType() {
     }
 
-    public ProductType() {
+    public ProductType(String name, long productId) {
+        this.name = name;
+        this.productId = productId;
     }
 
     public long getId() {
@@ -34,22 +37,12 @@ public class ProductType {
         this.name = name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ProductType that = (ProductType) o;
-
-        if (id != that.id) return false;
-        return name != null ? name.equals(that.name) : that.name == null;
+    public long getProductId() {
+        return productId;
     }
 
-    @Override
-    public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
+    public void setProductId(long productId) {
+        this.productId = productId;
     }
 
     @Override
@@ -57,6 +50,7 @@ public class ProductType {
         return "ProductType{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", productId=" + productId +
                 '}';
     }
 }

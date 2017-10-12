@@ -5,6 +5,8 @@ import com.shpetny.backendusers.persistance.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductService {
     private final ProductRepository productRepository;
@@ -15,7 +17,11 @@ public class ProductService {
     }
 
 
-    public Product getProductById(long id){
+    public List<Product> getAllProduct(){
+        return (List<Product>) productRepository.findAll();
+    }
+
+      public Product getProductById(long id){
         return productRepository.findById(id);
     }
 }

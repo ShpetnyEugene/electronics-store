@@ -10,14 +10,18 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MultipurposeController {
 
-    @Value("app.backend.url")
+    @Value("${app.backend.url}")
     private String string;
 
-//    @GetMapping("/admin")
-//    public String showHomePage(ModelAndView modelAndView) {
-////        modelAndView.addObject("adminUrl",string);
-//        return "home";
-//    }
+    @Value("${app.admin.ui.url}")
+    private String string1;
+
+
+    @GetMapping("/admin")
+    public String showHomePage(ModelAndView modelAndView) {
+        modelAndView.addObject("adminUrl", string1);
+        return "admin";
+    }
 
     @GetMapping("/home")
     public String showHomePage() {
@@ -38,7 +42,8 @@ public class MultipurposeController {
 
     // Регистрация
     @GetMapping("/users/registration")
-    public String showRegistrationPage() {
+    public String showRegistrationPage(Model model) {
+        model.addAttribute("backendUrl", string);
         return "registration";
     }
 
@@ -49,9 +54,9 @@ public class MultipurposeController {
     }
 
     // Показать определенный продукт
-    @GetMapping("/product/{productName}/product")
-    public String showDefiniteProductsPage(@PathVariable String name, Model model) {
-        model.addAttribute("productName",name);
+    @GetMapping("/products/{productName}")
+    public String showDefiniteProductsPage(@PathVariable String productName, Model model) {
+        model.addAttribute("productName", productName);
         return "product";
     }
 

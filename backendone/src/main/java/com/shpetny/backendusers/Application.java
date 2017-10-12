@@ -18,27 +18,57 @@ public class Application {
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("http://localhost:8091");
-                registry.addMapping("/**").allowedOrigins("http://localhost:8092");
+                registry.addMapping("/**").allowedOrigins("http://localhost:8091",
+                        "http://localhost:8092");
             }
         };
     }
-
 }
+/*
+* TODO PROBLEMS :
+*  1. Panel Admin - Не находит переменную Value с application.properties
+*  2. Не работает SAOP CONSUMING
+*  3. 
+*
+*
+*
+* */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// TODO Problems:
+// 1. Не собираестя проект - maven package
+// 2.
 
 // Удалить PRICE - из BACKEND 1
 
 // Вопросы :
 
-// Как прошла перая лекция по Маш
-// Как сходили в кино ?
+// 1. Price in DB - Back-End 1
 
-// 0. Spring Безопастность
+
 // 1. через SOAP возможно изменять данные
-// 2.
+/// TODO +
+// 2. Filter ajax
+
 
 // TODO Pagenas to backeen
-// Как собрать maven отдельные варианты
 
 
 // 1. Сессии на spring ?
@@ -49,8 +79,6 @@ public class Application {
 
 // 2. Пока я отравляю по  полному URL
 // Вставить изи application.properties
-
-
 
 
 // 3. Где нужно делать конфиг на вход ?
