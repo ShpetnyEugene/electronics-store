@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="HelloService"
+                  targetNamespace="http://www.examples.com/wsdl/HelloService.wsdl"
+                  xmlns="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <message name="getPriceRequest">
+        <part name="id" type="long"/>
+    </message>
+
+    <message name="getPriceResponse">
+        <part name="value" type="string"/>
+    </message>
+
+
+    <message name="updatePriceRequest">
+        <part name="id" type="long"/>
+        <part name="newValue" type="double"/>
+    </message>
+
+
+    <portType name="UpdatePrice">
+        <operation name="getPriceById">
+            <input message="updatePriceRequest"/>
+            <output message="getPriceResponse"/>
+        </operation>
+    </portType>
+
+
+    <portType name="GETPrice">
+        <operation name="getPriceById">
+            <input message="getPriceRequest"/>
+            <output message="getPriceResponse"/>
+        </operation>
+    </portType>
+
+    <binding type="GETPrice" name="getPriceById">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="getPriceById">
+            <soap:operation soapAction="http://example.com/getTerm"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+
+</wsdl:definitions>

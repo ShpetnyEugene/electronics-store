@@ -5,7 +5,7 @@ package com.shpetny.backendusers.models;
  * @version 1.0
  */
 public enum Role {
-    USER(2), ADMIN(1);
+    USER(0), ADMIN(1);
 
     private int roleId;
 

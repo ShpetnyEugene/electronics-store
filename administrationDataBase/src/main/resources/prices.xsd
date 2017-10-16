@@ -36,6 +36,7 @@
         <xs:sequence>
             <xs:element name="id" type="xs:long"/>
             <xs:element name="value" type="xs:double"/>
+            <xs:element name="productId" type="xs:long"/>
         </xs:sequence>
     </xs:complexType>
 

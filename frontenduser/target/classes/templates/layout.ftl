@@ -76,12 +76,18 @@
                         <li><a href="#">One more separated link</a></li>
                     </ul>
                 </li>
+                <li><a href="http://localhost:8099/admin">Admin panel<span class="sr-only">(current)</span></a></li>
+
             </ul>
+
 
             <input id="template-custom"/>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
+
+                <button class="btn btn-primary" type="button"> <a href="/users/cart"><span class="badge" id="cart"></span></a>
+                    Cart <span class="badge">4</span>
+                </button>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Action Account <span class="caret"></span></a>

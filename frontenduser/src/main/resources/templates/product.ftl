@@ -45,4 +45,15 @@
 </div>
 <!-- /.container -->
 
+<script>
+
+    function addCart() {
+        $.cookie("cart",productId)
+    }
+
+    function buy() {
+    }
+
+
+</script>
 </@u.page>

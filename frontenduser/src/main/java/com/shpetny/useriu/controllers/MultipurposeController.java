@@ -13,15 +13,6 @@ public class MultipurposeController {
     @Value("${app.backend.url}")
     private String string;
 
-    @Value("${app.admin.ui.url}")
-    private String string1;
-
-
-    @GetMapping("/admin")
-    public String showHomePage(ModelAndView modelAndView) {
-        modelAndView.addObject("adminUrl", string1);
-        return "admin";
-    }
 
     @GetMapping("/home")
     public String showHomePage() {
@@ -30,7 +21,8 @@ public class MultipurposeController {
 
     // Вход в систему
     @GetMapping("/users/login")
-    public String showLoginPage() {
+    public String showLoginPage(Model model) {
+        model.addAttribute("url",string);
         return "login";
     }
 

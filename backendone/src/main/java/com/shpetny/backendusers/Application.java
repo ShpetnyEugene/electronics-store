@@ -3,11 +3,13 @@ package com.shpetny.backendusers;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication
+//@ComponentScan("com.shpetny.*")
 public class Application {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Application.class, args);
@@ -18,17 +20,40 @@ public class Application {
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("http://localhost:8091",
-                        "http://localhost:8092");
+                registry.addMapping("/**").
+                        allowedOrigins("http://localhost:8091",
+                        "http://localhost:8092","*","http://localhost:8091")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD");
             }
         };
     }
 }
 /*
+2. TODO SOAP WSDL
+4. TODO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 * TODO PROBLEMS :
-*  1. Panel Admin - Не находит переменную Value с application.properties
-*  2. Не работает SAOP CONSUMING
-*  3. 
+*  2. Не работает SOAP CONSUMING
+*  3.
+*
+*  // Fidler
 *
 *
 *

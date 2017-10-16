@@ -18,7 +18,9 @@ public class UserService {
     }
 
     public void createUser(String login, String password) {
-        repository.save(new User(login,password, Role.USER));
+        User user = new User(login,password);
+        user.setRole(Role.USER);
+        repository.save(user);
     }
 
     public List<User> getAllUsers() {

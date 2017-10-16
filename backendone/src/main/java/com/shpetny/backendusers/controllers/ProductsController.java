@@ -1,10 +1,9 @@
 package com.shpetny.backendusers.controllers;
 
-import com.shpetny.backendusers.models.Product;
+import com.shpetny.backendusers.models.ProductView;
 import com.shpetny.backendusers.services.ProductService;
-import com.shpetny.backendusers.services.UserService;
+import com.shpetny.backendusers.services.ProductViewService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +11,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/products")
 public class ProductsController {
+
+    @Autowired
+    private ProductViewService service;
 
     private final ProductService productService;
 
@@ -25,11 +27,10 @@ public class ProductsController {
         return null;
     }
 
-
     @GetMapping
     @ResponseBody
-    public List<Product> getAllProducts(){
-       return productService.getAllProduct();
+    public List<ProductView> getAllProducts() {
+        return service.buildingPriceView();
     }
 
 }

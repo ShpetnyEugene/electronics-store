@@ -1,6 +1,7 @@
 <#import "layout.ftl" as u>
-<@u.page title="/users/login">
+<@u.page title="Login">
 <h1>Login Form</h1>
+<h4 id="message" style="text-align: center"></h4>
 <div class="form-inline">
     <div class="form-group">
         <label class="sr-only" for="exampleInputEmail3">Email address</label>
@@ -25,7 +26,7 @@
         var formData = {};
         formData['login'] = document.getElementById("login");
         formData['password'] = document.getElementById("password1");
-        var myURL = '/users/login';
+        var myURL = 'http://localhost:8090/users/login';
 
         $.ajax({
             type: "POST",
@@ -34,7 +35,12 @@
             dataType: 'json',
             contentType : 'application/json',
             complete : function(data) {
-                window.location.href = "/home";
+                if(data){
+//                    window.location.href = "/home";
+                }else {
+                    clearForm();
+                    $("#message").html("Error user not found")
+                }
             }
         });
     }

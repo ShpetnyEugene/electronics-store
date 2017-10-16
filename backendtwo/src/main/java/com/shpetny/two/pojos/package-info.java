@@ -1,6 +1,2 @@
-@XmlSchema(namespace = "soap-products",elementFormDefault = XmlNsForm.QUALIFIED)
-
+@javax.xml.bind.annotation.XmlSchema(namespace = "soap-products", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package com.shpetny.two.pojos;
-
-import javax.xml.bind.annotation.XmlNsForm;
-import javax.xml.bind.annotation.XmlSchema;

@@ -18,7 +18,7 @@ public class PriceConfiguration {
     @Bean
     public QuotePrice quotePrice(Jaxb2Marshaller marshaller) {
         QuotePrice price = new QuotePrice();
-        price.setDefaultUri("http://localhost:8092/ws/prices.xsd");
+        price.setDefaultUri("http://localhost:8092/ws/prices.wsdl");
         price.setMarshaller(marshaller);
         price.setUnmarshaller(marshaller);
         return price;

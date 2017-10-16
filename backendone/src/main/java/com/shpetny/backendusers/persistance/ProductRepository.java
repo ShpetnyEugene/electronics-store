@@ -1,6 +1,7 @@
 package com.shpetny.backendusers.persistance;
 
 import com.shpetny.backendusers.models.Product;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

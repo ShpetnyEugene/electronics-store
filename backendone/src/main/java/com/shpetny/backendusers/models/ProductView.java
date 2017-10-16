@@ -7,11 +7,40 @@ public class ProductView {
 
     private long id;
     private String name;
-    private long price;
+    private double price;
     private long amount;
     private String description;
     private double rating;
     private List<String> images;
+
+    public ProductView() {
+    }
+
+    public ProductView(long id, String name, double price, long amount, String description, double rating) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
+        this.description = description;
+        this.rating = rating;
+    }
+
+    public ProductView(String name, double price, long amount, String description, double rating) {
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
+        this.description = description;
+        this.rating = rating;
+    }
+
+    public ProductView(String name, double price, long amount, String description, double rating, List<String> images) {
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
+        this.description = description;
+        this.rating = rating;
+        this.images = images;
+    }
 
     public long getId() {
         return id;
@@ -29,11 +58,11 @@ public class ProductView {
         this.name = name;
     }
 
-    public long getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
