@@ -51,8 +51,8 @@
         <h3 style="text-align: center">Change information about product</h3>
         <h4>Select product</h4>
 
-        <select multiple class="form-control">
-            <option>1</option>
+        <select name="id" id="select" multiple class="form-control">
+
         </select>
 
         <h4>Please input new information</h4>
@@ -80,7 +80,7 @@
 
         <center>
             <button onclick="submit()">Change</button>
-
+            <button onclick="deleteProduct()">Delete</button>
             <button onclick="clearForm()">Clear form</button>
         </center>
 
@@ -107,6 +107,7 @@
 <script>
     function submit() {
         var formData = {};
+        formData['id'] = document.getElementsByName("id");
         formData['name'] = document.getElementById("name");
         formData['amount'] = document.getElementById("amount");
         formData['descriptions'] = document.getElementById("descriptions");
@@ -129,6 +130,24 @@
             }
         });
     }
+
+    function deleteProduct() {
+        var formData = {};
+        formData['id'] = document.getElementsByName("id");
+        var myURL = '${url}/admin';
+        $.ajax({
+            type: "DELETE",
+            data: JSON.stringify(formData),
+            url: myURL,
+            dataType: 'json',
+            contentType: 'application/json',
+            complete: function (data) {
+                console.log('Delete id : ' + data)
+            }
+        });
+    }
+
+
     function clearForm() {
         var inputList = document.getElementsByTagName("input");
         for (i = 0; i < inputList.length; i++) {
@@ -143,10 +162,21 @@
     function accept() {
 
     }
-    
+
     function redirectOnCatalog() {
         window.location.href = "http://localhost:8091/home"
     }
+
+
+    $(function () {
+        $.getJSON('http://localhost:8097/admin', function (data) {
+            $.each(data.product, function (i, f) {
+                var element = "<option" + f.id + ">" + f.name + "</option>";
+                $(element).appendTo("#select")
+            });
+        });
+    });
+
 
 </script>
 

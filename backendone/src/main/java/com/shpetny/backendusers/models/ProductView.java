@@ -1,8 +1,6 @@
 package com.shpetny.backendusers.models;
 
 
-import java.util.List;
-
 public class ProductView {
 
     private long id;
@@ -11,7 +9,7 @@ public class ProductView {
     private long amount;
     private String description;
     private double rating;
-    private List<String> images;
+    private String images;
 
     public ProductView() {
     }
@@ -33,7 +31,17 @@ public class ProductView {
         this.rating = rating;
     }
 
-    public ProductView(String name, double price, long amount, String description, double rating, List<String> images) {
+    public ProductView(long id, String name, double price, long amount, String description, double rating, String images) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
+        this.description = description;
+        this.rating = rating;
+        this.images = images;
+    }
+
+    public ProductView(String name, double price, long amount, String description, double rating, String images) {
         this.name = name;
         this.price = price;
         this.amount = amount;
@@ -90,11 +98,11 @@ public class ProductView {
         this.rating = rating;
     }
 
-    public List<String> getImages() {
+    public String getImages() {
         return images;
     }
 
-    public void setImages(List<String> images) {
+    public void setImages(String images) {
         this.images = images;
     }
 }

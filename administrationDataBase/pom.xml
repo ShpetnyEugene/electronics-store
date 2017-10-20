@@ -57,9 +57,9 @@
                             <goal>wsimport</goal>
                         </goals>
                         <configuration>
-                            <wsdlFiles>
-                                <wsdlFile>http://localhost:8092/ws/price.wsdl</wsdlFile>
-                            </wsdlFiles>
+                            <!--<wsdlFiles>-->
+                                <!--<wsdlFile>http://localhost:8092/ws/price.wsdl</wsdlFile>-->
+                            <!--</wsdlFiles>-->
                             <packageName>com.shpetny.store.soap</packageName>
                         </configuration>
                     </execution>

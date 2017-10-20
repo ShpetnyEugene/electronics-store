@@ -27,7 +27,6 @@
         formData['login'] = document.getElementById("login");
         formData['password'] = document.getElementById("password1");
         var myURL = 'http://localhost:8090/users/login';
-
         $.ajax({
             type: "POST",
             data: JSON.stringify(formData),
@@ -35,12 +34,12 @@
             dataType: 'json',
             contentType : 'application/json',
             complete : function(data) {
-                if(data){
-//                    window.location.href = "/home";
-                }else {
-                    clearForm();
-                    $("#message").html("Error user not found")
-                }
+//                if(data){
+////                    window.location.href = "/home";
+//                }else {
+//                    clearForm();
+//                    $("#message").html("Error user not found")
+//                }
             }
         });
     }

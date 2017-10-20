@@ -14,8 +14,13 @@
                     <h3 class="card-title">Product Name</h3>
                     <h4>$24.99</h4>
                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
-                    <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                    4.0 stars
+                    <select id="example">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
                 </div>
             </div>
             <!-- /.card -->
@@ -52,8 +57,30 @@
     }
 
     function buy() {
+
     }
 
+
+
+    $(function () {
+
+        $.getJSON("", function (data) {
+                    $.each(data.product, function (i, f) {
+                        var element = "<a href="+ +">" +
+                                "<img class=/"card-img-top" id="i.id" src="+ i.images +" ";
+                        $(element).appendTo("#name1")
+                    });
+                }
+        );
+    });
+
+
+    $(function() {
+        $('#example').barrating({
+            theme: 'fontawesome-stars'
+        });
+        $('#example').barrating('set',3);
+    });
 
 </script>
 </@u.page>

@@ -5,14 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MultipurposeController {
 
     @Value("${app.backend.url}")
     private String string;
-
 
     @GetMapping("/home")
     public String showHomePage() {
@@ -22,7 +20,7 @@ public class MultipurposeController {
     // Вход в систему
     @GetMapping("/users/login")
     public String showLoginPage(Model model) {
-        model.addAttribute("url",string);
+        model.addAttribute("url", string);
         return "login";
     }
 
@@ -39,10 +37,16 @@ public class MultipurposeController {
         return "registration";
     }
 
-    // Список всех покупок
+    // Список всех товаров
     @GetMapping("/products")
     public String showProductsPage() {
         return "products";
+    }
+
+    // История покупок
+    @GetMapping("/users/purchases")
+    public String showPurchasesPage() {
+        return "purchases";
     }
 
     // Показать определенный продукт

@@ -17,24 +17,44 @@ public class ProductViewService {
 
     private QuotePrice quotePrice = new QuotePrice();
 
-
-    public List<ProductView> getAllViewPrices(){
-        return null;
-    }
-
-    public List<ProductView> buildingPriceView(){
+    /**
+     * This method make product view with product and price obtain with other application
+     *
+     * @return List building ProductView with Product and Price
+     */
+    public List<ProductView> buildingPriceView() {
         List<Product> products = productService.getAllProduct();
-
         List<ProductView> productViews = new ArrayList<>();
-
-        for(Product product: products){
-            productViews.add(new ProductView(product.getName(),
-                    quotePrice.getPrice(product.getId()).getPrice().get(0).getValue(),
-                    product.getAmount(),
-                    product.getDescription(),
-                    product.getRating(),
-                    product.getImages()));
+        for (Product product : products) {
+            productViews.add(
+                    new ProductView(product.getId(),
+                            product.getName(),
+                            quotePrice.getPrice(product.getId()).getPrice().get(0).getValue(),
+                            product.getAmount(),
+                            product.getDescription(),
+                            product.getRating(),
+                            product.getImages()));
         }
         return productViews;
     }
+
+
+    public List<ProductView> getPriceViewByTypeProduct(String name) {
+        List<Product> products = productService.getAllProductByType(name);
+        List<ProductView> productViews = new ArrayList<>();
+        for (Product product : products) {
+            productViews.add(
+                    new ProductView(product.getId(),
+                            product.getName(),
+                            quotePrice.getPrice(product.getId()).getPrice().get(0).getValue(),
+                            product.getAmount(),
+                            product.getDescription(),
+                            product.getRating(),
+                            product.getImages()));
+        }
+        return productViews;
+    }
+
+
+
 }

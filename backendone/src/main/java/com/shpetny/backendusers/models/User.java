@@ -13,6 +13,10 @@ public class User {
     private String password;
     private Role role;
 
+    @OneToOne
+    @JoinColumn(name = "id",nullable = false)
+    private Cart cart;
+
 
     public User() {
     }

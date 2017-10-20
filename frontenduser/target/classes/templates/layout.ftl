@@ -13,6 +13,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/resources/css/shop-item.css" rel="stylesheet">
+    <link href="/resources/css/fontawesome-stars.css" rel="stylesheet">
     <link href="/resources/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/resources/assets/easy-autocomplete/easy-autocomplete.css" rel="stylesheet">
     <link href="/resources/assets/easy-autocomplete/easy-autocomplete.themes.css" rel="stylesheet">
@@ -22,6 +23,7 @@
 
 
     <script src="/resources/assets/jquery/jquery-3.1.1.min.js"></script>
+    <script src="/resources/js/jquery.barrating.min.js"></script>
     <script src="/resources/assets/easy-autocomplete/jquery.easy-autocomplete.js"></script>
 
 
@@ -61,33 +63,20 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/products">Catalog <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-                <li><a href="http://localhost:8099/admin">Admin panel<span class="sr-only">(current)</span></a></li>
 
+                <li><a href="/products">Catalog <span class="sr-only">(current)</span></a></li>
+
+                <li><input id="template-custom" style="width: 500px"/></li>
             </ul>
 
 
-            <input id="template-custom"/>
-
             <ul class="nav navbar-nav navbar-right">
 
-                <button class="btn btn-primary" type="button"> <a href="/users/cart"><span class="badge" id="cart"></span></a>
-                    Cart <span class="badge">4</span>
+                <button class="btn btn-primary" type="button"><a href="/users/cart"><span class="badge"
+                                                                                          id="cart"></span></a>
+                    Cart <span class="badge"></span>
                 </button>
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Action Account <span class="caret"></span></a>
@@ -96,7 +85,6 @@
                         <li><a href="/users/registration">Registration</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="/users/logout">Logout</a></li>
-
                     </ul>
                 </li>
             </ul>
@@ -113,19 +101,24 @@
 
 <script>
     var options = {
-                url: "http://localhost:8090/products",
-                getValue: "name",
-                template: {
-                    type: "custom", method: function (value, item) {
-                        console.log(item);
-                        return "<img src='"  + "' /> | " + item.getName() + " | " + item.getDescription();
-                    }
-                }
-            };
-
-
+        url: "http://localhost:8090/products",
+        getValue: "name",
+        list: {
+            match: {
+                enabled: true
+            }
+        },
+        template: {
+            type: "custom", method: function (value, item) {
+                console.log(item);
+                return "<img style='height:50px;' src='" + item.images + "'/> | " + value + " | " + item.description + "  |  " + item.price + "$";
+            }
+        }
+    };
     console.log(options);
     $("#template-custom").easyAutocomplete(options);
+
+    var count = sessionStorage.length;
 
 </script>
 
@@ -135,6 +128,7 @@
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="/resources/assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="/resources/assets/popper/popper.min.js"></script>
+<script src="/resources/js/jquery.barrating.min.js"></script>
 
 
 <!-- Just to make our placeholder images work. Don't actually copy the next line! -->

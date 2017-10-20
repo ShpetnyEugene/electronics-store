@@ -9,22 +9,22 @@ public class Features {
     private long id;
     private String name;
     private String value;
-    private long productId;
+
 
     public Features() {
     }
 
-    public Features(long id, String name, String value, long productId) {
+    public Features(long id, String name, String value) {
         this.id = id;
         this.name = name;
         this.value = value;
-        this.productId = productId;
+
     }
 
-    public Features(String name, String value, long productId) {
+    public Features(String name, String value) {
         this.name = name;
         this.value = value;
-        this.productId = productId;
+
     }
 
     public long getId() {
@@ -51,13 +51,7 @@ public class Features {
         this.value = value;
     }
 
-    public long getProductId() {
-        return productId;
-    }
 
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -67,7 +61,6 @@ public class Features {
         Features features = (Features) o;
 
         if (id != features.id) return false;
-        if (productId != features.productId) return false;
         if (name != null ? !name.equals(features.name) : features.name != null) return false;
         return value != null ? value.equals(features.value) : features.value == null;
     }
@@ -77,7 +70,6 @@ public class Features {
         int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (value != null ? value.hashCode() : 0);
-        result = 31 * result + (int) (productId ^ (productId >>> 32));
         return result;
     }
 
@@ -86,8 +78,7 @@ public class Features {
         return "Features{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", value='" + value + '\'' +
-                ", productId=" + productId +
+                ", value='" + value +
                 '}';
     }
 }

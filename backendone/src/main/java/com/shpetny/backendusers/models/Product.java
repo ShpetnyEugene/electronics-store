@@ -16,16 +16,22 @@ public class Product {
     private long amount;
     private String description;
     private double rating;
-    @ElementCollection(targetClass = String.class)
-    private List<String> images;
+
+    @OneToOne
+    @JoinColumn(name = "id",nullable = false)
+    private ProductType type;
+
+    // TODO CHECK THIS FIELD
+    @OneToMany
+    @JoinColumn(name = "productId")
+    private List<Features> features;
+
+    private String images;
 
     public Product() {
     }
 
-    // TODO SELECT * FROM product INNER JOIN productType ON product.id == productType.productId
-
-
-    public Product(String name, long amount, String description, double rating, List<String> images) {
+    public Product(String name, long amount, String description, double rating, String images) {
         this.name = name;
         this.amount = amount;
         this.description = description;
@@ -80,11 +86,11 @@ public class Product {
         this.rating = rating;
     }
 
-    public List<String> getImages() {
+    public String getImages() {
         return images;
     }
 
-    public void setImages(List<String> images) {
+    public void setImages(String images) {
         this.images = images;
     }
 

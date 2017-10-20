@@ -21,6 +21,13 @@
     </div>
 </div>
 
+<script>
+
+    var len = sessionStorage.length;
+
+    sessionStorage.
+
+</script>
 
 
 </@u.page>

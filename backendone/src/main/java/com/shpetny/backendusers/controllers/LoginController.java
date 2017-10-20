@@ -40,7 +40,7 @@ public class LoginController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             return "redirect:http://localhost:8091/home";
         }else {
-            return "login";
+            return "redirect:http://localhost:8091/users/login";
         }
 
     }

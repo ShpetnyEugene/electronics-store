@@ -1,5 +1,6 @@
 package com.shpetny.backendusers.controllers;
 
+import com.shpetny.backendusers.models.ProductType;
 import com.shpetny.backendusers.models.ProductView;
 import com.shpetny.backendusers.services.ProductService;
 import com.shpetny.backendusers.services.ProductViewService;
@@ -22,9 +23,15 @@ public class ProductsController {
         this.productService = productService;
     }
 
-    @PostMapping
+    @PutMapping
     public String createProduct() {
         return null;
+    }
+
+
+    @PostMapping
+    public List<ProductView> getAllProductsByType(@RequestBody ProductType type) {
+        return service.getPriceViewByTypeProduct(type.getName());
     }
 
     @GetMapping

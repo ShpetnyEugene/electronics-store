@@ -2,21 +2,23 @@
 
 <@u.page title="Home">
 
-<!-- Page Content -->
-<div class="container">
 
+<div class="col-md-6 col-md-offset-3">
     <ul class="nav nav-pills">
-        <li role="presentation"><a href="#">Home</a></li>
-        <li role="presentation"><a href="#">Profile</a></li>
-        <li role="presentation"><a href="#">Messages</a></li>
+        <li><a class="btn btn-primary" id="Phone" onClick="getDetails(this)">Phones</a></li>
+        <li><a class="btn btn-primary" id="Laptops" onClick="getDetails(this)">Laptops</a></li>
+        <li><a class="btn btn-primary" id="Tablets" onClick="getDetails(this)" )>Tablets</a></li>
+        <li><a class="btn btn-primary" id="TVs" onClick="getDetails(this)">TVS</a></li>
     </ul>
+</div>
 
-
+<div class="container">
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
         <h2 class="display-3">A Warm Welcome!</h2>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
-        <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
+        <p class="lead">This is an electronics store with a large selection of goods. To work with the site, select a
+            category.</p>
+        <a href="/products" class="btn btn-primary btn-lg">Go to catalog !</a>
     </header>
 
     <!-- Page Features -->
@@ -27,7 +29,8 @@
                 <img class="card-img-top" src="http://placehold.it/200x150" alt="">
                 <div class="card-body">
                     <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse
+                        necessitatibus neque.</p>
                 </div>
                 <div class="card-footer">
                     <a href="#" class="btn btn-primary">Find Out More!</a>
@@ -40,7 +43,8 @@
                 <img class="card-img-top" src="http://placehold.it/200x150" alt="">
                 <div class="card-body">
                     <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse
+                        necessitatibus neque.</p>
                 </div>
                 <div class="card-footer">
                     <a href="#" class="btn btn-primary">Find Out More!</a>
@@ -53,7 +57,8 @@
                 <img class="card-img-top" src="http://placehold.it/200x150" alt="">
                 <div class="card-body">
                     <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse
+                        necessitatibus neque.</p>
                 </div>
                 <div class="card-footer">
                     <a href="#" class="btn btn-primary">Find Out More!</a>
@@ -66,7 +71,8 @@
                 <img class="card-img-top" src="http://placehold.it/200x150" alt="">
                 <div class="card-body">
                     <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse
+                        necessitatibus neque.</p>
                 </div>
                 <div class="card-footer">
                     <a href="#" class="btn btn-primary">Find Out More!</a>
@@ -74,4 +80,25 @@
             </div>
         </div>
     </div>
+</div>
+<script>
+
+    function getDetails(obj) {
+        var formData = {};
+        formData['name'] = obj.id;
+        var myURL = 'http://localhost:8090/products';
+        $.ajax({
+            type: "POST",
+            data: JSON.stringify(formData),
+            url: myURL,
+            dataType: 'json',
+            contentType: 'application/json',
+            complete: function (data) {
+                window.location.href = "/products";
+            }
+        });
+    }
+</script>
+
+</script>
 </@u.page>
