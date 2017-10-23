@@ -30,13 +30,19 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
+    // TODO CHECK THIS  METHOD
     public boolean updateProduct(Product product) {
-        Product product1 = new Product(product.getName(),
-                product.getAmount(), product.getDescription(), product.getRating());
-        product1.setId(product.getId());
-        productRepository.delete(product);
-        productRepository.save(product1);
-        return true;
+        if(product.getId() == 0){
+            productRepository.save(product);
+            return true;
+        }else{
+            Product product1 = new Product(product.getName(),
+                    product.getAmount(), product.getDescription(), product.getRating());
+            product1.setId(product.getId());
+            productRepository.delete(product);
+            productRepository.save(product1);
+            return true;
+        }
     }
 
 
@@ -44,8 +50,11 @@ public class ProductService {
         productRepository.delete(id);
     }
 
+    public void createProduct(Product product){
+        productRepository.save(product);
+    }
+
     public List<Product> getAllProductByType(String name){
         return productRepository.findByTypeName(name);
     }
-
 }

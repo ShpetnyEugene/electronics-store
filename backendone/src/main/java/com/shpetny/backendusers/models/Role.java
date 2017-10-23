@@ -1,5 +1,8 @@
 package com.shpetny.backendusers.models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
  * @author Shpetny Eugene
  * @version 1.0
@@ -13,6 +16,7 @@ public enum Role {
         this.roleId = roleId;
     }
 
+    @JsonCreator
     public static Role roleFromId(Integer roleId) {
         for (Role role : Role.values()) {
             if (role.roleId == roleId) {
@@ -20,6 +24,11 @@ public enum Role {
             }
         }
         throw new IllegalArgumentException();
+    }
+
+    @JsonValue
+    public int getCode() {
+        return roleId;
     }
 
 }

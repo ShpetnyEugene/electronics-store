@@ -1,5 +1,6 @@
 package com.shpetny.adminspanel;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +16,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @SpringBootApplication
 @ComponentScan("com.shpetny.backendusers.persistance")
 public class Application {
+
+    @Value("${app.backenduser.url}")
+    private String backendUserUrl;
+
+    @Value("${app.frontedadmin.url}")
+    private String frontedAdminUrl;
+
+    @Value("${app.fronteduser.url}")
+    private String frontedUserUrl;
+
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
@@ -25,8 +37,8 @@ public class Application {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**").
-                        allowedOrigins("http://localhost:8091",
-                                "http://localhost:8099","*","http://localhost:8091")
+                        allowedOrigins(backendUserUrl,
+                                frontedAdminUrl,"*",frontedUserUrl)
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD");
             }
         };

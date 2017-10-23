@@ -12,11 +12,6 @@
         <input type="password" class="form-control" id="password1" placeholder="Password" required>
     </div>
 
-    <div class="checkbox">
-        <label>
-            <input type="checkbox"> Remember me
-        </label>
-    </div>
     <button onclick="submit()" class="btn btn-default">Login</button>
     <button onclick="clearForm()" class="btn btn-default">Clear form</button>
 </div>
@@ -24,22 +19,25 @@
 <script>
     function submit() {
         var formData = {};
-        formData['login'] = document.getElementById("login");
-        formData['password'] = document.getElementById("password1");
+        formData['login'] = document.getElementById("login").value;
+        formData['password'] = document.getElementById("password1").value;
         var myURL = 'http://localhost:8090/users/login';
         $.ajax({
             type: "POST",
             data: JSON.stringify(formData),
             url: myURL,
             dataType: 'json',
-            contentType : 'application/json',
-            complete : function(data) {
-//                if(data){
-////                    window.location.href = "/home";
-//                }else {
-//                    clearForm();
-//                    $("#message").html("Error user not found")
-//                }
+            contentType: 'application/json',
+            complete: function (data) {
+                if(data){
+                    window.location.href = "/home";
+                }else {
+                    clearForm();
+                    $("#message").html("Error user not found")
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+               console.log(thrownError)
             }
         });
     }

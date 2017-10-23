@@ -18,6 +18,7 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
     List<Product> findByTypeName(String name);
 
+
 //    List<Product>
 
 }

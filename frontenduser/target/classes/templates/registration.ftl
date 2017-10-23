@@ -17,11 +17,11 @@
         <label class="sr-only" for="exampleInputPassword3">Repeat Password</label>
         <input type="password" class="form-control" id="password2" placeholder="Password 2">
     </div>
-    <div class="checkbox">
-        <label>
-            <input type="checkbox"> Remember me
-        </label>
-    </div>
+    <#--<div class="checkbox">-->
+        <#--<label>-->
+            <#--<input type="checkbox"> Remember me-->
+        <#--</label>-->
+    <#--</div>-->
     <button onclick="submit()" class="btn btn-default">Registration</button>
     <button onclick="clearForm()" class="btn btn-default">Clear form</button>
 </div>

@@ -21,6 +21,12 @@ public class RegistrationController {
         this.userService = userService;
     }
 
+
+    /**
+     * This method create new User in system
+     *
+     * @param user User which need save in data base
+     */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public User registerUser(@RequestBody User user) {

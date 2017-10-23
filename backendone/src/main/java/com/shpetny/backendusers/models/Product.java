@@ -1,5 +1,7 @@
 package com.shpetny.backendusers.models;
 
+import org.springframework.context.annotation.Lazy;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,6 +18,9 @@ public class Product {
     private long amount;
     private String description;
     private double rating;
+
+    @ManyToMany(mappedBy = "products")
+    private List<Cart> carts;
 
     @OneToOne
     @JoinColumn(name = "id",nullable = false)

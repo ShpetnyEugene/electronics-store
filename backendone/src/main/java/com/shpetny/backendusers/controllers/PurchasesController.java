@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users/purchases")
-public class Purchases {
+public class PurchasesController {
 
     @GetMapping
     public List<Product> getPurchases(){

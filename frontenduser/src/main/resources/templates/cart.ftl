@@ -23,17 +23,8 @@
 
 
 <script>
-    sessionStorage.setItem("product",1);
-    sessionStorage.setItem("product",2);
-    sessionStorage.setItem("product",3);
-    sessionStorage.setItem("product",4);
-    sessionStorage.setItem("product",5);
-    sessionStorage.setItem("product",6);
-    sessionStorage.setItem("product",7);
-    var i=0;
-    for (i =0 ; i < sessionStorage.length; i++){
-        console.log(i);
-    }
+
+
 
 </script>
 

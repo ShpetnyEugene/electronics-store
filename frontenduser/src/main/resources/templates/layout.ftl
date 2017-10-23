@@ -64,9 +64,12 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
 
-                <li><a href="/products">Catalog <span class="sr-only">(current)</span></a></li>
+                <li><a href="/products">Catalog<span class="sr-only">(current)</span></a></li>
+
+                <li><a href="http://localhost:8099/admin/login">Admin<span class="sr-only">(current)</span></a></li>
 
                 <li><input id="template-custom" style="width: 500px"/></li>
+
             </ul>
 
 
@@ -120,6 +123,7 @@
 
 
     var count = sessionStorage.length;
+    $("#cart").html(count)
 
 </script>
 

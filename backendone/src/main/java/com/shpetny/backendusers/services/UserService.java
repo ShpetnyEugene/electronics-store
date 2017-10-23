@@ -18,7 +18,7 @@ public class UserService {
     }
 
     public void createUser(String login, String password) {
-        User user = new User(login,password);
+        User user = new User(login, password);
         user.setRole(Role.USER);
         repository.save(user);
     }
@@ -27,7 +27,18 @@ public class UserService {
         return (List<User>) repository.findAll();
     }
 
+    public User getByLogin(String login) {
+        return repository.findByLogin(login);
+    }
+
     public boolean checkUserByLoginAndPassword(String login, String password) {
         return repository.findByLoginAndPassword(login, password) != null;
     }
+
+    public boolean checkUserByLoginPasswordRole(String login, String password) {
+        User user = repository.findByLoginAndPassword(login, password);
+        return user != null && user.getRole() == Role.ADMIN;
+    }
+
+
 }

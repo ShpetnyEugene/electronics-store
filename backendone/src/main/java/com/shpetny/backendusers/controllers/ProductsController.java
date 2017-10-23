@@ -23,15 +23,9 @@ public class ProductsController {
         this.productService = productService;
     }
 
-    @PutMapping
-    public String createProduct() {
-        return null;
-    }
-
-
     @PostMapping
-    public List<ProductView> getAllProductsByType(@RequestBody ProductType type) {
-        return service.getPriceViewByTypeProduct(type.getName());
+    public List<ProductView> getAllProductsByType(@RequestAttribute("type") String type) {
+        return service.getPriceViewByTypeProduct(type);
     }
 
     @GetMapping

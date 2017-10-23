@@ -17,6 +17,9 @@ public class User {
     @JoinColumn(name = "id",nullable = false)
     private Cart cart;
 
+    @OneToOne
+    @JoinColumn(name = "id",nullable = false)
+    private Purchases purchases;
 
     public User() {
     }

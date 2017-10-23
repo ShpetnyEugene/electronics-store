@@ -1,5 +1,11 @@
 package com.shpetny.backendusers;
 
+import com.shpetny.backendusers.models.Cart;
+import com.shpetny.backendusers.models.Product;
+import com.shpetny.backendusers.persistance.CartRepository;
+import com.shpetny.backendusers.persistance.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -8,12 +14,36 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import java.util.Arrays;
+
 @SpringBootApplication
-public class Application {
+public class Application implements CommandLineRunner {
+
+    @Autowired
+    private CartRepository repository;
+
+    @Autowired
+    private ProductRepository productRepository;
+
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Application.class, args);
     }
 
+    //access command line arguments
+    @Override
+    public void run(String... args) throws Exception {
+
+        Cart cart = new Cart();
+        cart.setUserId(1);
+        cart.setProducts(Arrays.asList(productRepository.findById(5)));
+        repository.save(cart);
+        //do something
+    }
+
+//    public static void main(String[] args) throws Exception {
+//        SpringApplication.run(Application.class, args);
+//    }
+//
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurerAdapter() {
@@ -27,10 +57,3 @@ public class Application {
         };
     }
 }
-/**
- * TODO
- * 0. Login Что-то совсем не то
- * 1. Session Storage
- * 2. Как передать id нажатого продукта
- *
- * */

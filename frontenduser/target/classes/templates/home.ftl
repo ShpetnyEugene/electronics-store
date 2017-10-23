@@ -3,14 +3,7 @@
 <@u.page title="Home">
 
 
-<div class="col-md-6 col-md-offset-3">
-    <ul class="nav nav-pills">
-        <li><a class="btn btn-primary" id="Phone" onClick="getDetails(this)">Phones</a></li>
-        <li><a class="btn btn-primary" id="Laptops" onClick="getDetails(this)">Laptops</a></li>
-        <li><a class="btn btn-primary" id="Tablets" onClick="getDetails(this)" )>Tablets</a></li>
-        <li><a class="btn btn-primary" id="TVs" onClick="getDetails(this)">TVS</a></li>
-    </ul>
-</div>
+
 
 <div class="container">
     <!-- Jumbotron Header -->

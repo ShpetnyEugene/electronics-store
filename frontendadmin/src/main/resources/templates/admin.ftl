@@ -48,14 +48,14 @@
 
         <h5 id="message"></h5>
 
-        <h3 style="text-align: center">Change information about product</h3>
+        <h3 style="text-align: center">Change information about product or create product</h3>
         <h4>Select product</h4>
 
         <select name="id" id="select" multiple class="form-control">
 
         </select>
 
-        <h4>Please input new information</h4>
+        <h4>Please input information</h4>
 
         <div class="form-group">
             <label for="name">Name</label>
@@ -64,7 +64,7 @@
 
         <div class="form-group">
             <label for="amount">Amount</label>
-            <input type="number" class="form-control" id="amount" placeholder="Amount">
+            <input type="number" class="form-control" id="amount" placeholder="Amount" min="0">
         </div>
 
         <div class="form-group">
@@ -75,18 +75,26 @@
 
         <div class="form-group">
             <label for="amount">Rating</label>
-            <input type="number" class="form-control" id="rating" placeholder="Rating">
+            <input type="number" class="form-control" max="5" min="1" id="rating" placeholder="Rating">
         </div>
 
         <center>
             <button onclick="submit()">Change</button>
-            <button onclick="deleteProduct()">Delete</button>
             <button onclick="clearForm()">Clear form</button>
         </center>
 
+        <select name="id" id="select" multiple class="form-control">
+
+        </select>
+
+        <center>
+            <button onclick="deleteProduct()">Delete</button>
+        </center>
+
+
         <h3 style="text-align: center">Change view home</h3>
         <label class="radio-inline">
-            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 4 Last product
+            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" autofocus> 4 Last product
         </label>
         <label class="radio-inline">
             <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 4 Most Popular
@@ -107,11 +115,12 @@
 <script>
     function submit() {
         var formData = {};
-        formData['id'] = document.getElementsByName("id");
-        formData['name'] = document.getElementById("name");
-        formData['amount'] = document.getElementById("amount");
-        formData['descriptions'] = document.getElementById("descriptions");
-        formData['rating'] = document.getElementById("rating");
+        formData['id'] = document.getElementsByName("id").value;
+        formData['name'] = document.getElementById("name").value;
+        formData['amount'] = document.getElementById("amount").value;
+        formData['descriptions'] = document.getElementById("descriptions").value;
+        formData['rating'] = document.getElementById("rating").value;
+
         var myURL = '${url}/admin';
 
         $.ajax({
@@ -133,7 +142,7 @@
 
     function deleteProduct() {
         var formData = {};
-        formData['id'] = document.getElementsByName("id");
+        formData['id'] = document.getElementsByName("id").value;
         var myURL = '${url}/admin';
         $.ajax({
             type: "DELETE",
@@ -160,7 +169,24 @@
     }
 
     function accept() {
-
+        var formData = {};
+        formData['radioButton'] = $('input[name="genderS"]:checked').val();
+        var myURL = '${url}/admin';
+        $.ajax({
+            type: "POST",
+            data: JSON.stringify(formData),
+            url: myURL,
+            dataType: 'json',
+            contentType: 'application/json',
+            complete: function (data) {
+                if (data) {
+                    $("#message").html("Successful !!")
+                } else {
+                    clearForm();
+                    $("#message").html("Check the data")
+                }
+            }
+        });
     }
 
     function redirectOnCatalog() {

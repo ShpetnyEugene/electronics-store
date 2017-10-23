@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * @author Shpetny Eugene
+ * @version 1.0
+ */
 @RestController
 @ComponentScan("com.shpetny.backendusers")
 @RequestMapping("/admin")
@@ -20,8 +24,14 @@ public class AdminController {
         this.service = service;
     }
 
+
+    /**
+     * This method return all products from database
+     *
+     * @return List products which return all product from data base
+     */
     @GetMapping
-    public List<Product> getAllPrice(){
+    public List<Product> getAllPrice() {
         return service.getAllProduct();
     }
 
@@ -31,7 +41,7 @@ public class AdminController {
      * @param product - Product obtain with frontend which need update from Data Base
      */
     @PostMapping
-    public boolean updateProduct(@RequestBody Product product) {
+    public boolean updateOrCreateProduct(@RequestBody Product product) {
         return service.updateProduct(product);
     }
 

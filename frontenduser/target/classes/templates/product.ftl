@@ -59,11 +59,27 @@
     function buy() {
 
     }
+
+
+
+    $(function () {
+
+        $.getJSON("", function (data) {
+                    $.each(data.product, function (i, f) {
+                        var element = "<a href="+ +">" +
+                                "<img class=/"card-img-top" id="i.id" src="+ i.images +" ";
+                        $(element).appendTo("#name1")
+                    });
+                }
+        );
+    });
+
+
     $(function() {
         $('#example').barrating({
             theme: 'fontawesome-stars'
         });
-        $('#example').barrating('set',);
+        $('#example').barrating('set',3);
     });
 
 </script>
