@@ -17,33 +17,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import java.util.Arrays;
 
 @SpringBootApplication
-public class Application implements CommandLineRunner {
-
-    @Autowired
-    private CartRepository repository;
-
-    @Autowired
-    private ProductRepository productRepository;
-
+public class Application {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Application.class, args);
     }
 
-    //access command line arguments
-    @Override
-    public void run(String... args) throws Exception {
-
-        Cart cart = new Cart();
-        cart.setUserId(1);
-        cart.setProducts(Arrays.asList(productRepository.findById(5)));
-        repository.save(cart);
-        //do something
-    }
-
-//    public static void main(String[] args) throws Exception {
-//        SpringApplication.run(Application.class, args);
-//    }
-//
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurerAdapter() {
@@ -57,3 +35,9 @@ public class Application implements CommandLineRunner {
         };
     }
 }
+
+/**
+ * TODO
+ * 0. Возможно нужно перенести Sec. Config в frontend
+ *
+ * */

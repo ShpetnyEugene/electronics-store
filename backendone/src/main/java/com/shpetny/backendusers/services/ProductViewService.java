@@ -22,8 +22,7 @@ public class ProductViewService {
      *
      * @return List building ProductView with Product and Price
      */
-    public List<ProductView> buildingPriceView() {
-        List<Product> products = productService.getAllProduct();
+    public List<ProductView> buildingPriceView(List<Product> products) {
         List<ProductView> productViews = new ArrayList<>();
         for (Product product : products) {
             productViews.add(
@@ -54,7 +53,4 @@ public class ProductViewService {
         }
         return productViews;
     }
-
-
-
 }

@@ -14,5 +14,5 @@ public class PriceService {
         this.repository = repository;
     }
 
-    // TODO Нужно ли создовать еще одну цену
+
 }

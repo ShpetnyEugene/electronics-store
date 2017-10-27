@@ -22,17 +22,23 @@ public class Product {
     @ManyToMany(mappedBy = "products")
     private List<Cart> carts;
 
+    @ManyToMany(mappedBy = "products")
+    private List<Purchases> purchases;
+
     @OneToOne
     @JoinColumn(name = "id",nullable = false)
     private ProductType type;
 
     // TODO CHECK THIS FIELD
-    @OneToMany
-    @JoinColumn(name = "productId")
+//    @OneToMany
+//    @JoinColumn(name = "productId")
+    @ManyToMany(mappedBy = "products")
     private List<Features> features;
 
     private String images;
 
+    // STATIC MAP ---- TODO
+    // TODO ADD FIELD OR SAVE TO CASH
     public Product() {
     }
 

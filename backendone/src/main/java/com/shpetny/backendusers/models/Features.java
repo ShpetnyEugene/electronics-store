@@ -1,15 +1,23 @@
 package com.shpetny.backendusers.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Features {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
     private String value;
 
+
+    @ManyToMany
+    @JoinTable(name = "FeaturesToProduct",
+            joinColumns = @JoinColumn(name = "featuresId", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "productId", referencedColumnName = "id"))
+    private List<Product> products;
 
     public Features() {
     }
@@ -51,7 +59,13 @@ public class Features {
         this.value = value;
     }
 
+    public List<Product> getProducts() {
+        return products;
+    }
 
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
 
     @Override
     public boolean equals(Object o) {

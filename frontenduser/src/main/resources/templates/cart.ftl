@@ -20,12 +20,43 @@
     </div>
 </div>
 
+    <button onclick="buy()">Buy All</button>
 
+<div id="asd">
+
+</div>
 
 <script>
 
 
 
+    for(var i = 0; i < sessionStorage.length; i++){
+        $.get( "http://localhost:8090/users/cart?id="+sessionStorage.getItem(i), function( data ) {
+            $( "#asd" ).html( data. );
+
+        });
+    }
+
+
+    function buy() {
+        var data = sessionStorage;
+        var myUrl = 'http://localhost:8090/users/cart';
+        $.ajax({
+            type: "DELETE",
+            data: JSON.stringify(data),
+            dataType: 'json',
+            contentType: 'application/json',
+            url:myUrl,
+            complete:function () {
+                sessionStorage.clear();
+                window.href("/home")
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(thrownError)
+            }
+        });
+    }
 </script>
+
 
 </@u.page>

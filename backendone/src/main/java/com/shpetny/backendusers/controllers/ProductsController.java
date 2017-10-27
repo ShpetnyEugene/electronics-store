@@ -23,15 +23,15 @@ public class ProductsController {
         this.productService = productService;
     }
 
-    @PostMapping
-    public List<ProductView> getAllProductsByType(@RequestAttribute("type") String type) {
+    @GetMapping
+    public List<ProductView> getAllProductsByType(@RequestParam("type") String type) {
         return service.getPriceViewByTypeProduct(type);
     }
 
-    @GetMapping
-    @ResponseBody
-    public List<ProductView> getAllProducts() {
-        return service.buildingPriceView();
-    }
+//    @GetMapping
+//    @ResponseBody
+//    public List<ProductView> getAllProducts() {
+//        return service.buildingPriceView();
+//    }
 
 }

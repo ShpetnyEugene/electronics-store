@@ -12,11 +12,6 @@
         <input type="password" class="form-control" id="password1" placeholder="Password" required>
     </div>
 
-    <div class="checkbox">
-        <label>
-            <input type="checkbox"> Remember me
-        </label>
-    </div>
     <button onclick="submit()" class="btn btn-default">Login</button>
     <button onclick="clearForm()" class="btn btn-default">Clear form</button>
 </div>

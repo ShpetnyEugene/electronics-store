@@ -17,11 +17,7 @@
         <label class="sr-only" for="exampleInputPassword3">Repeat Password</label>
         <input type="password" class="form-control" id="password2" placeholder="Password 2">
     </div>
-    <#--<div class="checkbox">-->
-        <#--<label>-->
-            <#--<input type="checkbox"> Remember me-->
-        <#--</label>-->
-    <#--</div>-->
+
     <button onclick="submit()" class="btn btn-default">Registration</button>
     <button onclick="clearForm()" class="btn btn-default">Clear form</button>
 </div>
@@ -29,9 +25,8 @@
 <h4 id="message"></h4>
 
 <script>
-
     function submit() {
-        if (document.getElementById("password2").value !== document.getElementById("password1").value){
+        if (document.getElementById("password2").value !== document.getElementById("password1").value) {
             clearForm();
             $("#message").html("Password 1 and password 2 must match");
             return;
@@ -55,7 +50,6 @@
             }
         });
     }
-
 
     function clearForm() {
         var inputList = document.getElementsByTagName("input");

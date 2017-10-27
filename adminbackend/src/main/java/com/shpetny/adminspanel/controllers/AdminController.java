@@ -1,19 +1,14 @@
-package com.shpetny.adminspanel.controller;
+package com.shpetny.adminspanel.controllers;
 
 import com.shpetny.backendusers.models.Product;
 import com.shpetny.backendusers.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * @author Shpetny Eugene
- * @version 1.0
- */
-@RestController
-@ComponentScan("com.shpetny.backendusers")
+@Controller
 @RequestMapping("/admin")
 public class AdminController {
 
@@ -30,6 +25,7 @@ public class AdminController {
      *
      * @return List products which return all product from data base
      */
+
     @GetMapping
     public List<Product> getAllPrice() {
         return service.getAllProduct();

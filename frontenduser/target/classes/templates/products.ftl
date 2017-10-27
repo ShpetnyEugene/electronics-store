@@ -56,8 +56,8 @@
 
             $.getJSON("http://localhost:8090/products?type=Phone", function (data) {
                         $.each(data.product, function (i, f) {
-                            var element = "<a href="+ +">" +
-                                    "<img class=/"card-img-top" id="i.id" src="+ i.images +" ";
+//                            var element = "<a href="+ +">" +
+//                                    "<img class=/"card-img-top" id="i.id" src="+ i.images +" ";
 
                             $(element).appendTo("#name1")
                         });
@@ -68,8 +68,8 @@
             function page(obj) {
                 $.getJSON("http://localhost:8090/products?type="+obj.id, function (data) {
                             $.each(data.product, function (i, f) {
-                                var element = "<a href="+ +">" +
-                                        "<img class=/"card-img-top" id="i.id" src="+ i.images +" ";
+//                                var element = "<a href="+ +">" +
+//                                        "<img class=/"card-img-top" id="i.id" src="+ i.images +" ";
 
                                 $(element).appendTo("#name1")
                             });
@@ -78,11 +78,14 @@
             }
 
             function buy(obj) {
-                sessionStorage.setItem(obj.id,obj.id);
+
+                sessionStorage.setItem("1",1);
+                sessionStorage.setItem("2",2);
+                sessionStorage.setItem("5",5);
+                sessionStorage.setItem("4",4);
+                sessionStorage.setItem("3",3);
+                sessionStorage.setItem("6",6);
             }
 
         </script>
-
-
-
 </@u.page>

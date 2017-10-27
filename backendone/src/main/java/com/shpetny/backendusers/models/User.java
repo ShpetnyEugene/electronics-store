@@ -13,13 +13,13 @@ public class User {
     private String password;
     private Role role;
 
+
     @OneToOne
     @JoinColumn(name = "id",nullable = false)
     private Cart cart;
 
-    @OneToOne
-    @JoinColumn(name = "id",nullable = false)
-    private Purchases purchases;
+    @ManyToMany(mappedBy = "users")
+    private List<Purchases> purchases;
 
     public User() {
     }
@@ -35,6 +35,22 @@ public class User {
     public User(String login, String password) {
         this.login = login;
         this.password = password;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
+    public List<Purchases> getPurchases() {
+        return purchases;
+    }
+
+    public void setPurchases(List<Purchases> purchases) {
+        this.purchases = purchases;
     }
 
     public String getLogin() {

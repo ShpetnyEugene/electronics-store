@@ -169,7 +169,7 @@
     }
 
     function accept() {
-        var formData = {};
+        var formData = {};// TODO
         formData['radioButton'] = $('input[name="genderS"]:checked').val();
         var myURL = '${url}/admin';
         $.ajax({

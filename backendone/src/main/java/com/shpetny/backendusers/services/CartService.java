@@ -10,16 +10,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class CartService {
 
+    private final CartRepository cartRepository;
+    private final UserRepository userRepository;
+    private final ProductRepository productRepository;
+
     @Autowired
-    private CartRepository cartRepository;
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private ProductRepository productRepository;
+    public CartService(CartRepository cartRepository, UserRepository userRepository, ProductRepository productRepository) {
+        this.cartRepository = cartRepository;
+        this.userRepository = userRepository;
+        this.productRepository = productRepository;
+    }
 
     public void addProduct (Product product,long userId){
         Cart cart = new Cart();
@@ -27,4 +32,5 @@ public class CartService {
         cart.setProducts(Arrays.asList(productRepository.findById(product.getId())));
         cartRepository.save(cart);
     }
+
 }

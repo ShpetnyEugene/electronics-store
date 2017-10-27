@@ -2,9 +2,6 @@
 
 <@u.page title="Home">
 
-
-
-
 <div class="container">
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">

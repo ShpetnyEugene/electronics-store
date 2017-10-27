@@ -10,6 +10,13 @@ import java.util.List;
 
 @Service
 public class UserService {
+
+//    @Autowired
+//    private PurchaseService purchaseService;
+
+
+    @Autowired
+
     private final UserRepository repository;
 
     @Autowired
@@ -35,10 +42,20 @@ public class UserService {
         return repository.findByLoginAndPassword(login, password) != null;
     }
 
+    public User getUserById(long id){
+        return repository.findById(id);
+    }
+
     public boolean checkUserByLoginPasswordRole(String login, String password) {
         User user = repository.findByLoginAndPassword(login, password);
         return user != null && user.getRole() == Role.ADMIN;
     }
 
+    public void deletePurchases(long id){
+//        User user = getUserById(id); // TODO REMOVE BY ID
+//        user.setPurchases(null);
+//        purchaseService.deleteUserFromPurchases(id);
+//        repository.save(user);
+    }
 
 }

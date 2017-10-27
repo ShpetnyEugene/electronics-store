@@ -39,6 +39,8 @@
                     <small class="text-muted">Posted by Anonymous on 3/1/17</small>
                     <hr>
                     <a href="#" class="btn btn-success">Leave a Review</a>
+
+                    <button  onclick="addCart()">FFFFF</button>
                 </div>
             </div>
             <!-- /.card -->
@@ -52,21 +54,14 @@
 <script>
 
     function addCart() {
-        $.cookie("cart",productId)
+        sessionStorage.setItem(1,1);
     }
-
-    function buy() {
-
-    }
-
-
 
     $(function () {
-
-        $.getJSON("", function (data) {
+        $.getJSON("http://localhost:8090/products", function (data) {
                     $.each(data.product, function (i, f) {
-                        var element = "<a href="+ +">" +
-                                "<img class=/"card-img-top" id="i.id" src="+ i.images +" ";
+//                        var element = "<a href="+ +">" +
+//                                "<img class=/"card-img-top" id="i.id" src="+ i.images +" ";
                         $(element).appendTo("#name1")
                     });
                 }

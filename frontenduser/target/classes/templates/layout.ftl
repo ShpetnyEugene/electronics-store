@@ -63,21 +63,17 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-
                 <li><a href="/products">Catalog<span class="sr-only">(current)</span></a></li>
-
                 <li><a href="http://localhost:8099/admin/login">Admin<span class="sr-only">(current)</span></a></li>
-
                 <li><input id="template-custom" style="width: 500px"/></li>
-
             </ul>
 
 
             <ul class="nav navbar-nav navbar-right">
+                <button class="btn btn-primary" type="button"> <a href="/users/cart"><span class="badge"  id="cart">
 
-                <button class="btn btn-primary" type="button"><a href="/users/cart"><span class="badge"
-                                                                                          id="cart"></span></a>
-                    Cart <span class="badge"></span>
+                </span></a>
+                    <#--<span class="badge"></span>-->
                 </button>
 
                 <li class="dropdown">
@@ -95,7 +91,7 @@
     </div><!-- /.container-fluid -->
 </nav>
     <#nested>
-
+<
 <footer>
     <hr>
     <h3 style="text-align: center">Created by Shpetny Eugene</h3>
@@ -118,11 +114,10 @@
             }
         }
     };
-    console.log(options);
+
     $("#template-custom").easyAutocomplete(options);
-
-
-    var count = sessionStorage.length;
+//    <span class="badge"></span>
+    $('<span class="badge">Cart '+ sessionStorage.length+'</span>').appendTo('#cart')
 
 </script>
 
