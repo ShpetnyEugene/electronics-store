@@ -9,6 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <version>1.1</version>
+
+    <packaging>jar</packaging>
+
     <artifactId>back-end-one-users</artifactId>
 
     <dependencies>
@@ -44,10 +48,6 @@
         </dependency>
     </dependencies>
 
-
-    <packaging>war</packaging>
-
-
     <build>
         <plugins>
             <plugin>
@@ -72,14 +72,27 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
-                                <wsdlFile>http://localhost:8092/ws/price.wsdl</wsdlFile>
+                                <!--<wsdlFile>http://localhost:8092/ws/price.wsdl</wsdlFile>-->
                             </wsdlFiles>
                             <packageName>com.shpetny.store.soap</packageName>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <attachClasses>true</attachClasses>
+                    <classesClassifier>classes</classesClassifier>
+                </configuration>
+            </plugin>
+
         </plugins>
+
+
+
     </build>
 
 </project>

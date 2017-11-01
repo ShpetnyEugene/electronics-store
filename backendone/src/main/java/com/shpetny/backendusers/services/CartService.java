@@ -2,6 +2,7 @@ package com.shpetny.backendusers.services;
 
 import com.shpetny.backendusers.models.Cart;
 import com.shpetny.backendusers.models.Product;
+import com.shpetny.backendusers.models.Purchases;
 import com.shpetny.backendusers.models.User;
 import com.shpetny.backendusers.persistance.CartRepository;
 import com.shpetny.backendusers.persistance.ProductRepository;
@@ -9,6 +10,8 @@ import com.shpetny.backendusers.persistance.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.naming.ldap.PagedResultsControl;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,19 +21,52 @@ public class CartService {
     private final CartRepository cartRepository;
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
+    private final PurchasesService purchasesService;
+    private final ProductService service;
+    private final UserService userService;
 
     @Autowired
-    public CartService(CartRepository cartRepository, UserRepository userRepository, ProductRepository productRepository) {
+    private ProductService productService;
+
+    @Autowired
+    public CartService(CartRepository cartRepository, UserRepository userRepository, ProductRepository productRepository, PurchasesService purchasesService, ProductService service, UserService userService) {
         this.cartRepository = cartRepository;
         this.userRepository = userRepository;
         this.productRepository = productRepository;
+        this.purchasesService = purchasesService;
+        this.service = service;
+        this.userService = userService;
     }
 
     public void addProduct (Product product,long userId){
-        Cart cart = new Cart();
-        cart.setUserId(userId);
-        cart.setProducts(Arrays.asList(productRepository.findById(product.getId())));
+        Cart cart = new Cart(userId);
+        if(cart.getProducts() == null){
+            cart.setProducts(Arrays.asList(productRepository.findById(product.getId())));
+        }else{
+            cart.getProducts().add(productRepository.findById(product.getId()));
+        }
         cartRepository.save(cart);
+    }
+
+
+    public void buyAllProduct(long userId, List<Product> products) {
+        User user = userService.getUserById(userId);
+        Purchases purchases = new Purchases();
+        for (Product product: products){
+            purchases.getProducts().add(service.getProductById(product.getId()));
+        }
+        purchases.setDate(LocalDate.now());
+        user.getPurchases().add(purchases);
+        productService.decrementAmountProducts(products);
+        userRepository.save(user);
+        purchasesService.addNewPurchases(purchases);
+    }
+
+
+    public void deleteProductFromCart(long userId,Product product){
+        Product productInput = productService.getProductById(product.getId());
+        Cart cart = userService.getUserById(userId).getCart();
+        cart.getProducts().remove(productInput);
     }
 
 }

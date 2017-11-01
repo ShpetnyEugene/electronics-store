@@ -52,7 +52,7 @@
         <h4>Select product</h4>
 
         <select name="id" id="select" multiple class="form-control">
-
+            <option value="0">Select product</option>
         </select>
 
         <h4>Please input information</h4>
@@ -83,7 +83,7 @@
             <button onclick="clearForm()">Clear form</button>
         </center>
 
-        <select name="id" id="select" multiple class="form-control">
+        <select name="id1" id="select1" multiple class="form-control">
 
         </select>
 
@@ -94,10 +94,10 @@
 
         <h3 style="text-align: center">Change view home</h3>
         <label class="radio-inline">
-            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" autofocus> 4 Last product
+            <input type="radio" class="message_pri" name="message_pri" value="1"/> 4 Most Popular
         </label>
         <label class="radio-inline">
-            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 4 Most Popular
+            <input type="radio" class="message_pri" name="message_pri" value="2"/> 4 Last product
         </label>
         <center>
             <button onclick="accept()">Accept</button>
@@ -115,14 +115,12 @@
 <script>
     function submit() {
         var formData = {};
-        formData['id'] = document.getElementsByName("id").value;
+        formData['id'] = document.getElementById("select").value;
         formData['name'] = document.getElementById("name").value;
         formData['amount'] = document.getElementById("amount").value;
-        formData['descriptions'] = document.getElementById("descriptions").value;
+        formData['description'] = document.getElementById("descriptions").value;
         formData['rating'] = document.getElementById("rating").value;
-
-        var myURL = '${url}/admin';
-
+        var myURL = '${url}/admin/panel';
         $.ajax({
             type: "POST",
             data: JSON.stringify(formData),
@@ -142,8 +140,8 @@
 
     function deleteProduct() {
         var formData = {};
-        formData['id'] = document.getElementsByName("id").value;
-        var myURL = '${url}/admin';
+        formData['id'] = document.getElementById("select1").value;
+        var myURL = '${url}/admin/panel';
         $.ajax({
             type: "DELETE",
             data: JSON.stringify(formData),
@@ -169,11 +167,11 @@
     }
 
     function accept() {
-        var formData = {};// TODO
-        formData['radioButton'] = $('input[name="genderS"]:checked').val();
-        var myURL = '${url}/admin';
+        var formData = {};
+        formData['type'] = $(".message_pri:checked").val();
+        var myURL = '${url}/admin/panel';
         $.ajax({
-            type: "POST",
+            type: "PUT",
             data: JSON.stringify(formData),
             url: myURL,
             dataType: 'json',
@@ -195,10 +193,11 @@
 
 
     $(function () {
-        $.getJSON('http://localhost:8097/admin', function (data) {
-            $.each(data.product, function (i, f) {
-                var element = "<option" + f.id + ">" + f.name + "</option>";
-                $(element).appendTo("#select")
+        $.getJSON('http://localhost:8097/admin/panel', function (data) {
+            $.each(data, function (i, f) {
+                var element = "<option value =" + f.id + " id=" + f.id + ">" + f.name + "</option>";
+                $(element).appendTo("#select");
+                $(element).appendTo("#select1");
             });
         });
     });

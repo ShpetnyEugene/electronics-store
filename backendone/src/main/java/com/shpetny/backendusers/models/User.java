@@ -18,7 +18,10 @@ public class User {
     @JoinColumn(name = "id",nullable = false)
     private Cart cart;
 
-    @ManyToMany(mappedBy = "users")
+    @ManyToMany(mappedBy = "users",cascade = {CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.REFRESH,
+            CascadeType.PERSIST})
     private List<Purchases> purchases;
 
     public User() {

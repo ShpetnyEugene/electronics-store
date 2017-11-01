@@ -1,34 +1,39 @@
 package com.shpetny.adminspanel.controllers;
 
+//import com.shpetny.adminspanel.services.ProductService;
+
 import com.shpetny.backendusers.models.Product;
+import com.shpetny.backendusers.models.Type;
 import com.shpetny.backendusers.services.ProductService;
+import com.shpetny.backendusers.services.TypeViewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
-@RequestMapping("/admin")
+@RestController
+@RequestMapping("/admin/panel")
 public class AdminController {
 
+    private final TypeViewService typeViewService;
     private final ProductService service;
-
-    @Autowired
-    public AdminController(ProductService service) {
-        this.service = service;
-    }
-
 
     /**
      * This method return all products from database
      *
      * @return List products which return all product from data base
      */
-
     @GetMapping
     public List<Product> getAllPrice() {
         return service.getAllProduct();
+    }
+
+
+    @Autowired
+    public AdminController(ProductService service, TypeViewService typeViewService) {
+        this.service = service;
+        this.typeViewService = typeViewService;
     }
 
     /**
@@ -41,7 +46,6 @@ public class AdminController {
         return service.updateProduct(product);
     }
 
-
     /**
      * Thi method delete product form Data Base
      *
@@ -50,5 +54,11 @@ public class AdminController {
     @DeleteMapping
     public void deleteProduct(@RequestBody Product product) {
         service.deleteProductById(product.getId());
+    }
+
+
+    @PutMapping
+    public void changeView(@RequestBody Type type) {
+        typeViewService.updateType(type.getType());
     }
 }

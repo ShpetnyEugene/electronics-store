@@ -15,6 +15,7 @@
         <module>backendtwo</module>
         <module>frontendadmin</module>
         <module>adminbackend</module>
+        <module>databaseadministration</module>
     </modules>
 
     <parent>

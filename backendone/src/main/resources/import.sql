@@ -4,19 +4,19 @@ INSERT INTO USER (login, password, role) VALUES ('admin', 'admin', 1);
 INSERT INTO USER (login, password, role) VALUES ('eugene', '123', 1);
 
 -- Phones
-INSERT INTO PRODUCT (name, amount, description, rating, images) VALUES ('Iphone-8', 100, 'Phone for rich', 0, 'http://localhost:8090/images/phone/iphone-8.jpeg');
-INSERT INTO PRODUCT (name, amount, description, rating, images) VALUES ('Samsung-s8', 100, 'Phone for not rich', 0, 'http://localhost:8090/images/phone/samsung-s8.jpeg');
-INSERT INTO PRODUCT (name, amount, description, rating, images) VALUES ('Xiaomi Mi-5', 100, 'Phone for 6yp1', 1, 'http://localhost:8090/images/phone/Xiaomi Mi-5.jpeg');
+INSERT INTO PRODUCT (name, amount, description, rating, images) VALUES ('Iphone-8', 100, 'Phone for rich', 4, 'http://localhost:8090/images/phone/iphone-8.jpeg');
+INSERT INTO PRODUCT (name, amount, description, rating, images) VALUES ('Samsung-s8', 100, 'Phone for not rich', 3, 'http://localhost:8090/images/phone/samsung-s8.jpeg');
+INSERT INTO PRODUCT (name, amount, description, rating, images) VALUES ('Xiaomi Mi-5', 100, 'Phone for me', 2, 'http://localhost:8090/images/phone/Xiaomi_Mi-5.jpeg');
 
 -- Laptops
-INSERT INTO PRODUCT (name, amount, description, rating, images) VALUES ('Apple MacBook Air', 120, 'Laptops for rich', 2, 'http://localhost:8090/images/laptops/Apple MacBook Air.jpeg');
-INSERT INTO PRODUCT (name, amount, description, rating, images) VALUES ('Lenova Legion', 110, 'Laptops for not rich', 4, 'http://localhost:8090/images/laptops/Lenovo Legion.jpeg');
-INSERT INTO PRODUCT (name, amount, description, rating, images) VALUES ('ASUS Vivo Book', 100, 'Laptops for me', 7, 'http://localhost:8090/images/laptops/ASUS Vivo Book.jpeg');
+INSERT INTO PRODUCT (name, amount, description, rating, images) VALUES ('Apple MacBook Air', 120, 'Laptops for rich', 2, 'http://localhost:8090/images/laptops/Apple_MacBook_Air.jpeg');
+INSERT INTO PRODUCT (name, amount, description, rating, images) VALUES ('Lenova Legion', 110, 'Laptops for not rich', 4, 'http://localhost:8090/images/laptops/Lenovo_Legion.jpeg');
+INSERT INTO PRODUCT (name, amount, description, rating, images) VALUES ('ASUS Vivo Book', 100, 'Laptops for me', 7, 'http://localhost:8090/images/laptops/ASUS_Vivo_Book.jpeg');
 
 -- Tablets
 INSERT INTO PRODUCT (name, amount, description, rating, images) VALUES ('Ipad 4 Air', 100, 'Tablets for rich', 0, 'http://localhost:8090/images/tablets/Ipad.jpeg');
-INSERT INTO PRODUCT (name, amount, description, rating, images) VALUES ('Samsung Galaxy Tab 8', 100, 'Tablets for not rich', 0, 'http://localhost:8090/images/tablets/Samsung Pad.jpeg');
-INSERT INTO PRODUCT (name, amount, description, rating, images) VALUES ('Xiaomi Redmi 4 PRO+', 100, 'Tablets for me', 1, 'http://localhost:8090/images/tablets/Xiaomi Mi Pad.jpeg');
+INSERT INTO PRODUCT (name, amount, description, rating, images) VALUES ('Samsung Galaxy Tab 8', 100, 'Tablets for not rich', 0, 'http://localhost:8090/images/tablets/Samsung_Pad.jpeg');
+INSERT INTO PRODUCT (name, amount, description, rating, images) VALUES ('Xiaomi Redmi 4 PRO+', 100, 'Tablets for me', 1, 'http://localhost:8090/images/tablets/Xiaomi_Mi_Pad.jpeg');
 
 -- TVS
 INSERT INTO PRODUCT (name, amount, description, rating, images) VALUES ('Samsung', 101, 'TV for rich', 0, 'http://localhost:8090/images/tvs/Samsung.jpeg');
@@ -61,7 +61,35 @@ INSERT INTO FEATURES (NAME, VALUE) VALUES ('Producer', 'Samsung');
 INSERT INTO FEATURES (NAME, VALUE) VALUES ('Producer', 'LG');
 INSERT INTO FEATURES (NAME, VALUE) VALUES ('Producer', 'Apple');
 INSERT INTO FEATURES (NAME, VALUE) VALUES ('Producer', 'Xiaomi');
+-- Year of issue
+INSERT INTO FEATURES (NAME, VALUE) VALUES ('Year', '2017');
+INSERT INTO FEATURES (NAME, VALUE) VALUES ('Year', '2016');
+INSERT INTO FEATURES (NAME, VALUE) VALUES ('Year', '2015');
+INSERT INTO FEATURES (NAME, VALUE) VALUES ('Year', '2014');
+INSERT INTO FEATURES (NAME, VALUE) VALUES ('Year', '2013');
+INSERT INTO FEATURES (NAME, VALUE) VALUES ('Year', '2012');
+
+-- FEATURES-PRODUCT
+
+-- OS
+INSERT INTO FEATURES_TO_PRODUCT(FEATURES_ID,PRODUCT_ID) VALUES (2,1);
+INSERT INTO FEATURES_TO_PRODUCT(FEATURES_ID,PRODUCT_ID) VALUES (1,2);
+INSERT INTO FEATURES_TO_PRODUCT(FEATURES_ID,PRODUCT_ID) VALUES (1,3);
+-- DIAGONAL
+INSERT INTO FEATURES_TO_PRODUCT(FEATURES_ID,PRODUCT_ID) VALUES (4,1);
+INSERT INTO FEATURES_TO_PRODUCT(FEATURES_ID,PRODUCT_ID) VALUES (5,2);
+INSERT INTO FEATURES_TO_PRODUCT(FEATURES_ID,PRODUCT_ID) VALUES (5,3);
+-- WEIGHT
+INSERT INTO FEATURES_TO_PRODUCT(FEATURES_ID,PRODUCT_ID) VALUES (8,1);
+INSERT INTO FEATURES_TO_PRODUCT(FEATURES_ID,PRODUCT_ID) VALUES (9,2);
+INSERT INTO FEATURES_TO_PRODUCT(FEATURES_ID,PRODUCT_ID) VALUES (10,3);
+-- YEAR
+INSERT INTO FEATURES_TO_PRODUCT(FEATURES_ID,PRODUCT_ID) VALUES (16,1);
+INSERT INTO FEATURES_TO_PRODUCT(FEATURES_ID,PRODUCT_ID) VALUES (16,2);
+INSERT INTO FEATURES_TO_PRODUCT(FEATURES_ID,PRODUCT_ID) VALUES (17,3);
 
 
-CREATE TABLE BROWSING (type INT DEFAULT 1);
+
+
+INSERT INTO TYPE (TYPE) VALUES (1);
 -- TODO

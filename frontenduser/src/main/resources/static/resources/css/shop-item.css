@@ -3,17 +3,13 @@ body {
 }
 
 .card-img-top {
-    width: 100%;
     border-top-left-radius: calc(0.25rem - 1px);
     border-top-right-radius: calc(0.25rem - 1px);
 }
 
 img {
-    vertical-align: middle;
-    border-style: none;
-}
-
-img {
+    margin: 0 auto ;
+    height: 100px;
     vertical-align: middle;
     border-style: none;
 }

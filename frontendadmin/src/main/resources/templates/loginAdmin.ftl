@@ -73,12 +73,12 @@
             dataType: 'json',
             contentType: 'application/json',
             complete: function (data) {
-//                if(data){
-//                    window.location.href = "/admin";
-//                }else {
-//                    clearForm();
-//                    $("#message").html("Error user not found")
-//                }
+                if(data){
+                    window.location.href = "/admin/panel";
+                }else {
+                    clearForm();
+                    $("#message").html("Error user not found")
+                }
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 console.log(thrownError)

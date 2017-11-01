@@ -28,6 +28,9 @@
             url: myURL,
             dataType: 'json',
             contentType: 'application/json',
+            xhrFields: {
+                withCredentials: true
+            },
             complete: function (data) {
                 if(data){
                     window.location.href = "/home";

@@ -14,9 +14,6 @@ public class UserService {
 //    @Autowired
 //    private PurchaseService purchaseService;
 
-
-    @Autowired
-
     private final UserRepository repository;
 
     @Autowired

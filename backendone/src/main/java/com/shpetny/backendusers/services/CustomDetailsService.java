@@ -24,8 +24,12 @@ import java.util.List;
 @Component
 public class CustomDetailsService implements UserDetailsService {
 
+    private final UserRepository repository;
+
     @Autowired
-    private UserRepository repository;
+    public CustomDetailsService(UserRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String login) {

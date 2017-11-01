@@ -1,11 +1,14 @@
 package com.shpetny.backendusers.controllers;
 
-import com.shpetny.backendusers.models.ProductType;
+import com.shpetny.backendusers.models.Product;
 import com.shpetny.backendusers.models.ProductView;
 import com.shpetny.backendusers.services.ProductService;
 import com.shpetny.backendusers.services.ProductViewService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -13,25 +16,18 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductsController {
 
-    @Autowired
-    private ProductViewService service;
-
+    private final ProductViewService service;
     private final ProductService productService;
 
     @Autowired
-    public ProductsController(ProductService productService) {
+    public ProductsController(ProductService productService, ProductViewService service) {
         this.productService = productService;
+        this.service = service;
     }
 
     @GetMapping
     public List<ProductView> getAllProductsByType(@RequestParam("type") String type) {
-        return service.getPriceViewByTypeProduct(type);
+        List<Product> products = productService.getAllProductByType(type);
+        return service.buildingPriceView(products);
     }
-
-//    @GetMapping
-//    @ResponseBody
-//    public List<ProductView> getAllProducts() {
-//        return service.buildingPriceView();
-//    }
-
 }

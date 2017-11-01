@@ -12,9 +12,6 @@ import java.util.List;
 @Service
 public class ProductViewService {
 
-    @Autowired
-    private ProductService productService;
-
     private QuotePrice quotePrice = new QuotePrice();
 
     /**
@@ -37,20 +34,20 @@ public class ProductViewService {
         return productViews;
     }
 
-
-    public List<ProductView> getPriceViewByTypeProduct(String name) {
-        List<Product> products = productService.getAllProductByType(name);
-        List<ProductView> productViews = new ArrayList<>();
-        for (Product product : products) {
-            productViews.add(
-                    new ProductView(product.getId(),
-                            product.getName(),
-                            quotePrice.getPrice(product.getId()).getPrice().get(0).getValue(),
-                            product.getAmount(),
-                            product.getDescription(),
-                            product.getRating(),
-                            product.getImages()));
-        }
-        return productViews;
-    }
+//
+//    public List<ProductView> getPriceViewByTypeProduct(String name) {
+//        List<Product> products = productService.getAllProductByType(name);
+//        List<ProductView> productViews = new ArrayList<>();
+//        for (Product product : products) {
+//            productViews.add(
+//                    new ProductView(product.getId(),
+//                            product.getName(),
+//                            quotePrice.getPrice(product.getId()).getPrice().get(0).getValue(),
+//                            product.getAmount(),
+//                            product.getDescription(),
+//                            product.getRating(),
+//                            product.getImages()));
+//        }
+//        return productViews;
+//    }
 }

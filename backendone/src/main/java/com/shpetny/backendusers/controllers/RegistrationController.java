@@ -21,7 +21,6 @@ public class RegistrationController {
         this.userService = userService;
     }
 
-
     /**
      * This method create new User in system
      *

@@ -13,7 +13,10 @@ public class Features {
     private String value;
 
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.REFRESH,
+            CascadeType.PERSIST})
     @JoinTable(name = "FeaturesToProduct",
             joinColumns = @JoinColumn(name = "featuresId", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "productId", referencedColumnName = "id"))

@@ -13,14 +13,14 @@ import java.util.List;
  */
 @Repository
 public interface ProductRepository extends CrudRepository<Product, Long> {
+
     Product findById(long id);
 
     List<Product> findByTypeName(String name);
 
-
-    // TODO
-    @Query("SELECT * FROM PRODUCTS LIMIT 50 ORDER BY RATING ASC")
+    @Query(value = "SELECT * FROM PRODUCT  ORDER BY RATING DESC LIMIT 4",nativeQuery = true)
     List<Product> findTopByRating();
-//    List<Product> 
+
+
 
 }

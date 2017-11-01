@@ -15,12 +15,14 @@ import java.util.List;
 @Service
 public class PurchasesService {
 
-    @Autowired
-    private PurchasesRepository purchasesRepository;
+    private final PurchasesRepository purchasesRepository;
+    private final UserService userService;
 
     @Autowired
-    private UserService userService;
-
+    public PurchasesService(PurchasesRepository purchasesRepository, UserService userService) {
+        this.purchasesRepository = purchasesRepository;
+        this.userService = userService;
+    }
 
 
     public List<Product> getProductByPurchases(long idUser){
@@ -33,16 +35,7 @@ public class PurchasesService {
     }
 
 
-    public void addNewPurchases(long idUser, List<Product> productList){
-
-        Purchases purchases = new Purchases();
-
-        User user =  userService.getUserById(idUser);
-
-        purchases.setDate(LocalDate.now());
-        purchases.setUsers(Arrays.asList(user));
-        purchases.setProducts(productList);
-
+    public void addNewPurchases(Purchases purchases){
         purchasesRepository.save(purchases);
 
     }

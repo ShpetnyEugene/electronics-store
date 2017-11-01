@@ -20,11 +20,19 @@
 
     <link href="/resources/assets/bootstrap/css/bootstrap-grid.min.css" rel="stylesheet">
     <link href="/resources/assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+<#--TODO CHECK THIS-->
+    <link href="/resources/assets/raty/labs.css" rel="stylesheet">
+    <link href="/resources/assets/raty/jquery.raty.css" rel="stylesheet">
 
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 
     <script src="/resources/assets/jquery/jquery-3.1.1.min.js"></script>
     <script src="/resources/js/jquery.barrating.min.js"></script>
     <script src="/resources/assets/easy-autocomplete/jquery.easy-autocomplete.js"></script>
+<#--TODO CHECK THIS-->
+    <script src="/resources/assets/raty/jquery.raty.js"></script>
+    <script src="/resources/assets/raty/labs.js"></script>
 
 
 <#--<!-- IE10 viewport hack for Surface/desktop Windows 8 bug &ndash;&gt;-->
@@ -70,10 +78,10 @@
 
 
             <ul class="nav navbar-nav navbar-right">
-                <button class="btn btn-primary" type="button"> <a href="/users/cart"><span class="badge"  id="cart">
+                <button class="btn btn-primary" type="button"><a href="/users/cart"><span class="badge" id="cart">
 
                 </span></a>
-                    <#--<span class="badge"></span>-->
+                <#--<span class="badge"></span>-->
                 </button>
 
                 <li class="dropdown">
@@ -91,7 +99,6 @@
     </div><!-- /.container-fluid -->
 </nav>
     <#nested>
-<
 <footer>
     <hr>
     <h3 style="text-align: center">Created by Shpetny Eugene</h3>
@@ -100,7 +107,7 @@
 
 <script>
     var options = {
-        url: "http://localhost:8090/products",
+        url: "http://localhost:8090/search",
         getValue: "name",
         list: {
             match: {
@@ -110,14 +117,14 @@
         template: {
             type: "custom", method: function (value, item) {
                 console.log(item);
-                return "<img style='height:50px;' src='" + item.images + "'/> | " + value + " | " + item.description + "  |  " + item.price + "$";
+                return "<a href=/products/" + item.id + ">" + "<img style='width:50px;' src=" + item.images + "/> | " + value + " | " + item.description + "  |  " + item.price + "$" + "</a";
             }
         }
     };
 
     $("#template-custom").easyAutocomplete(options);
-//    <span class="badge"></span>
-    $('<span class="badge">Cart '+ sessionStorage.length+'</span>').appendTo('#cart')
+    //    <span class="badge"></span>
+    $('<span class="badge">Cart ' + sessionStorage.length + '</span>').appendTo('#cart')
 
 </script>
 

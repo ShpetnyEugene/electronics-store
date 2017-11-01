@@ -33,14 +33,13 @@ public class LoginController {
     @PostMapping
     @ResponseBody
     public boolean login(@RequestBody User user, HttpServletRequest request,HttpSession httpSession) {
-        // TODO Check
         if (userService.checkUserByLoginAndPassword(user.getLogin(), user.getPassword())) {
             UserDetails userDetails = userDetailsService.loadUserByUsername(user.getLogin());
             User userSession = userService.getByLogin(user.getLogin());
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
             authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            httpSession.setAttribute("userId",userSession.getId()); // TODO check
+            httpSession.setAttribute("userId",userSession.getId());
             return true;
         }else {
             return false;

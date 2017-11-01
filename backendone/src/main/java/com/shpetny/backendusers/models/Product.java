@@ -19,26 +19,30 @@ public class Product {
     private String description;
     private double rating;
 
-    @ManyToMany(mappedBy = "products")
+    @ManyToMany(mappedBy = "products",cascade = {CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.REFRESH,
+            CascadeType.PERSIST})
     private List<Cart> carts;
 
-    @ManyToMany(mappedBy = "products")
+    @ManyToMany(mappedBy = "products",cascade = {CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.REFRESH,
+            CascadeType.PERSIST})
     private List<Purchases> purchases;
 
     @OneToOne
     @JoinColumn(name = "id",nullable = false)
     private ProductType type;
 
-    // TODO CHECK THIS FIELD
-//    @OneToMany
-//    @JoinColumn(name = "productId")
-    @ManyToMany(mappedBy = "products")
+    @ManyToMany(mappedBy = "products",cascade = {CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.REFRESH,
+            CascadeType.PERSIST})
     private List<Features> features;
 
     private String images;
 
-    // STATIC MAP ---- TODO
-    // TODO ADD FIELD OR SAVE TO CASH
     public Product() {
     }
 

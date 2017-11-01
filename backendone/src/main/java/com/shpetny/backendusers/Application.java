@@ -17,6 +17,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import java.util.Arrays;
 
 @SpringBootApplication
+
 public class Application {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Application.class, args);
@@ -35,9 +36,3 @@ public class Application {
         };
     }
 }
-
-/**
- * TODO
- * 0. Возможно нужно перенести Sec. Config в frontend
- *
- * */

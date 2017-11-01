@@ -13,11 +13,22 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "CartToProduct",
-    joinColumns = @JoinColumn(name = "cardId", referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "productId",referencedColumnName = "id"))
+            joinColumns = @JoinColumn(name = "cardId", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "productId", referencedColumnName = "id"))
     private List<Product> products;
+
+
+    private long userId;
+
+
+    public Cart() {
+    }
+
+    public Cart(long userId) {
+        this.userId = userId;
+    }
 
     public List<Product> getProducts() {
         return products;
@@ -27,17 +38,6 @@ public class Cart {
         this.products = products;
     }
 
-    private long userId;
-
-
-    public Cart() {
-    }
-
-//    public Cart(long productId, long userId) {
-//        this.productId = productId;
-//        this.userId = userId;
-//    }
-//
     public long getId() {
         return id;
     }
@@ -46,14 +46,6 @@ public class Cart {
         this.id = id;
     }
 
-//    public long getProductId() {
-//        return productId;
-//    }
-//
-//    public void setProductId(long productId) {
-//        this.productId = productId;
-//    }
-//
     public long getUserId() {
         return userId;
     }
@@ -61,34 +53,6 @@ public class Cart {
     public void setUserId(long userId) {
         this.userId = userId;
     }
-//
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//
-//        Cart cart = (Cart) o;
-//
-//        if (id != cart.id) return false;
-//        if (productId != cart.productId) return false;
-//        return userId == cart.userId;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        int result = (int) (id ^ (id >>> 32));
-//        result = 31 * result + (int) (productId ^ (productId >>> 32));
-//        result = 31 * result + (int) (userId ^ (userId >>> 32));
-//        return result;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "Cart{" +
-//                "id=" + id +
-//                ", productId=" + productId +
-//                ", userId=" + userId +
-//                '}';
-//    }
+
 }
 
