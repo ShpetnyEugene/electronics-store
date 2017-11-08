@@ -25,18 +25,13 @@ public class PurchasesService {
     }
 
 
-    public List<Product> getProductByPurchases(long idUser){
+    public List<Purchases> getPurchasesByUserId(long idUser){
         User user = userService.getUserById(idUser);
-        List<Product> products = new ArrayList<>();
-        for(Purchases purchases: user.getPurchases()) {
-            products.addAll(purchases.getProducts());
-        }
-        return products;
+        return user.getPurchases();
     }
 
 
     public void addNewPurchases(Purchases purchases){
         purchasesRepository.save(purchases);
-
     }
 }

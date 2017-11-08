@@ -31,7 +31,7 @@ public class ProductController {
     }
 
     @PostMapping
-    @ResponseBody// TODO CHECK THIS METHOD
+    @ResponseBody
     public void buyProduct(@RequestBody List<Product> products) {
         for (Product product : products) {
             product.setAmount(product.getAmount() - 1);

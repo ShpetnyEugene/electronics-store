@@ -2,52 +2,71 @@
 
 <@u.page title="Purshases">
 
-
-<#--<div class="col-lg-4 col-md-6 mb-4">-->
-    <#--<div class="card h-100">-->
-        <#--<a href="#"><img class="card-img-top" id="image" src="http://placehold.it/700x400" alt=""></a>-->
-        <#--<div class="card-body">-->
-            <#--<h4 class="card-title">-->
-                <#--<a href="#" name="item" id="item6">Item Five</a>-->
-            <#--</h4>-->
-            <#--<h5>$24.99</h5>-->
-            <#--<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam-->
-                <#--aspernatur!-->
-                <#--Lorem ipsum dolor sit amet.</p>-->
-        <#--</div>-->
-        <#--<div class="card-footer">-->
-            <#--<small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>-->
-        <#--</div>-->
-    <#--</div>-->
-<#--</div>-->
-
+<div class="container-fluid">
+    <div id="products-container" class="row">
+    </div>
+</div>
+    <#if Session.userId??>
+    ${Session.userId}
+    </#if>
 <script>
 
-    $.getJSON("http://localhost:8090/products?type=Phone", function (data) {
-                $.each(data, function (i, f) {
-                    var element = "<div class=" + "col-lg-4 col-md-6 mb-4" + ">" +
-                            "<div class=" + "card h-100" + ">" + "<a href=" + "http://localhost:8091/products/" + f.id + ">" +
-                            "<img class=" + "card-img-top" + "style: width='30px'" + " id=" + f.id + " src=" + f.images + " alt=" + ">" + "</a>"
-                            + "<h4 class=" + "card-title" + ">" + "<div class=" + "card-body" + ">"
-                            + "<h4 class=" + "card-title" + ">" +
-                            "<a href=" + "http://localhost:8091/products/" + f.id
-                            + " name=" + f.name + " id=" + f.id + ">" + f.name + "</a>"
-                            + "</h4>" + "<h5>" + f.price + "$</h5>" + "<p class=" + "card-text" + ">" + f.description
-                            + "</p>" + "</div>"
-                            + "<div class=" + "card-footer" + ">"
-                            + " <select id=" + "example" + ">" +
-                            "<option value=" + "1" + ">" + "1" + "</option>" +
-                            "<option value=" + "2" + ">" + "2" + "</option>" +
-                            "<option value=" + "3" + ">" + "3" + "</option>" +
-                            "<option value=" + "4" + ">" + "4" + "</option>" +
-                            "<option value=" + "5" + ">" + "5" + "</option>" +
-                            "</select>"
-                            + "<button id=" + f.id + " type=" + "button" + " onclick=" + "buy(this)" + "> Add to Cart" + "</button>"
-                            + "</div>" + "</div>" + "</div>";
-                    $(element).appendTo("body")
-                });
-            }
-    );
+    var myURL = 'http://localhost:8090/users/purchases';
+    $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+        url: myURL,
+        xhrFields: {
+            withCredentials: true
+        },
+        complete: function (data) {
+            $.each(data, function (i, f) {
+                var element = "<div style='width:100px' class=" + "col-md-3" + ">" +
+                        "<div class=" + "card h-100" + ">" + "<a href=" + "http://localhost:8091/products/" + f.product.id + ">" +
+                        "<img class=" + "'card-img-top image-product'" + " id=" + f.product.id + " src=" + f.product.images + " alt=" + ">" + "</a>"
+                        + "<h4 class=" + "card-title" + ">" + "<div class=" + "card-body" + ">"
+                        + "<h4 class=" + "card-title" + ">" +
+                        "<a href=" + "http://localhost:8091/products/" + f.product.id
+                        + " name=" + f.product.name + " id=" + f.product.id + ">" + f.product.name + "</a>"
+                        + "</h4>" + "<h5>" + f.product.price + "$</h5>" + "<p class=" + "card-text" + ">" + f.product.description
+                        + "</p>" + "</div>"
+                        + "<div class=" + "card-footer" + ">"
+                        + "<button id=" + f.product.id + " type=" + "button" + " onclick=" + "deleteFromCart(this)" + "> Delete from cart" + "</button>"
+                        + "</div>" + "</div>" + "</div>";
+
+                $(element).appendTo("#products-container");
+            });
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(thrownError)
+        }
+    });
+
+
+    //    $.getJSON("http://localhost:8090/users/purchases", {
+    //        dataType: "json",
+    //        contentType: 'application/json',
+    //        xhrFields: {
+    //            withCredentials: true
+    //        }
+    //    }).done(function (data) {
+    //        $.each(data.product, function (i, f) {
+    //            var element = "<div style='width:100px' class=" + "col-md-3" + ">" +
+    //                    "<div class=" + "card h-100" + ">" + "<a href=" + "http://localhost:8091/products/" + data.product.id + ">" +
+    //                    "<img class=" + "'card-img-top image-product'" + " id=" + data.product.id + " src=" + data.product.images + " alt=" + ">" + "</a>"
+    //                    + "<h4 class=" + "card-title" + ">" + "<div class=" + "card-body" + ">"
+    //                    + "<h4 class=" + "card-title" + ">" +
+    //                    "<a href=" + "http://localhost:8091/products/" + data.product.id
+    //                    + " name=" + data.product.name + " id=" + data.product.id + ">" + data.product.name + "</a>"
+    //                    + "</h4>" + "<h5>" + data.product.price + "$</h5>" + "<p class=" + "card-text" + ">" + data.product.description
+    //                    + "</p>" + "</div>"
+    //                    + "<div class=" + "card-footer" + ">"
+    //                    + "<button id=" + data.product.id + " type=" + "button" + " onclick=" + "deleteFromCart(this)" + "> Delete from cart" + "</button>"
+    //                    + "</div>" + "</div>" + "</div>";
+    //            $(element).appendTo("#products-container");
+    //        });
+    //    });
 
 </script>
 

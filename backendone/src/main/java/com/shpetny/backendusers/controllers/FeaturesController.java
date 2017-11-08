@@ -2,11 +2,10 @@ package com.shpetny.backendusers.controllers;
 
 import com.shpetny.backendusers.models.Features;
 import com.shpetny.backendusers.services.FeaturesService;
-import com.shpetny.backendusers.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping("/features")
@@ -20,7 +19,7 @@ public class FeaturesController {
     }
 
     @GetMapping
-    public List<Features> getFeaturesByProduct(@RequestParam long productId){
+    public List<Features> getAllFeaturesById(@RequestParam long productId){
         return featuresService.getAllFeaturesByProduct(productId);
     }
 }

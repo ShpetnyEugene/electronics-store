@@ -15,4 +15,6 @@ public interface FeaturesRepository extends CrudRepository<Features, Long> {
 
     @Query(value = "SELECT * FROM FEATURES",nativeQuery = true)
     List<Features> getAllFeatures();
+
+    List<Features> getFeaturesByValueIn(List<String> features);
 }

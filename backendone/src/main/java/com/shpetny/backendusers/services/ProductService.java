@@ -1,5 +1,6 @@
 package com.shpetny.backendusers.services;
 
+import com.shpetny.backendusers.models.Features;
 import com.shpetny.backendusers.models.Product;
 import com.shpetny.backendusers.models.ProductView;
 import com.shpetny.backendusers.persistance.ProductRepository;
@@ -41,7 +42,7 @@ public class ProductService {
 
     public boolean updateProduct(Product product) {
         if (product.getId() == 0) {
-            productRepository.save(product); 
+            productRepository.save(product);
             return true;
         } else {
             productRepository.save(product);
@@ -57,16 +58,13 @@ public class ProductService {
         return productViewService.buildingPriceView(new ArrayList<>(products));
     }
 
+    // TODO УДАЛЕНИЕ ПРАВИЛЬНОЕ
     public void deleteProductById(long id) {
         productRepository.delete(id);
     }
 
     public void decrementAmountProducts(List<Product> products) {
-        List<Product> productList = new ArrayList<>();
-        for (Product product: products){
-            productList.add(productRepository.findById(product.getId()));
-        }
-        for (Product product : productList) {
+        for (Product product : products) {
             product.setAmount(product.getAmount() - 1);
             productRepository.save(product);
         }
@@ -74,5 +72,15 @@ public class ProductService {
 
     public List<Product> getAllProductByType(String name) {
         return productRepository.findByTypeName(name);
+    }
+
+
+
+    public List<Product> getProducts(List<Features> features){
+        List<Long> ids = new ArrayList<>();
+        for (Features features1: features){
+            ids.add(features1.getId());
+        }
+        return productRepository.getProduct(ids);
     }
 }

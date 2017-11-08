@@ -21,8 +21,8 @@
     <link href="/resources/assets/bootstrap/css/bootstrap-grid.min.css" rel="stylesheet">
     <link href="/resources/assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
 <#--TODO CHECK THIS-->
-    <link href="/resources/assets/raty/labs.css" rel="stylesheet">
     <link href="/resources/assets/raty/jquery.raty.css" rel="stylesheet">
+    <link href="/resources/assets/raty/labs.css" rel="stylesheet">
 
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
@@ -72,6 +72,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="/products">Catalog<span class="sr-only">(current)</span></a></li>
+                <li><a href="/users/purchases" onclick="sendPurchases()">Purchases<span class="sr-only">(current)</span></a></li>
                 <li><a href="http://localhost:8099/admin/login">Admin<span class="sr-only">(current)</span></a></li>
                 <li><input id="template-custom" style="width: 500px"/></li>
             </ul>
@@ -91,7 +92,7 @@
                         <li><a href="/users/login">Login</a></li>
                         <li><a href="/users/registration">Registration</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="/users/logout">Logout</a></li>
+                        <li><a onclick="logout()">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -106,6 +107,43 @@
 
 
 <script>
+
+
+    function logout() {
+        var myURL = 'http://localhost:8090/users/logout';
+        $.ajax({
+            type: "GET",
+            url: myURL,
+            xhrFields: {
+                withCredentials: true
+            },
+            complete: function () {
+                window.location.href = "/home";
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(thrownError)
+            }
+        });
+    }
+
+
+    function sendPurchases() {
+        var myURL = 'http://localhost:8090/users/purchases';
+        $.ajax({
+            type: "GET",
+            url: myURL,
+            xhrFields: {
+                withCredentials: true
+            },
+            complete: function () {
+                window.location.href = "/users/purchases";
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(thrownError)
+            }
+        });
+    }
+
     var options = {
         url: "http://localhost:8090/search",
         getValue: "name",

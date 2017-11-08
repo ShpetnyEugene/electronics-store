@@ -1,6 +1,5 @@
 package com.shpetny.store.services;
 
-
 import com.shpetny.store.pojos.Price;
 import org.springframework.stereotype.Service;
 

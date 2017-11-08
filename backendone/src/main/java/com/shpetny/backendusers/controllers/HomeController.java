@@ -27,7 +27,7 @@ public class HomeController {
     public List<ProductView> getViewHome() {
         if (typeViewService.getType().getType() == 1) {
             return productService.getTopProduct();
-        } else if (typeViewService.getType().getType() == 0) {
+        } else if (typeViewService.getType().getType() == 2) {
             return productService.getLastProduct();
         } else {
             throw new IllegalArgumentException();

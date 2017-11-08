@@ -1,5 +1,7 @@
 package com.shpetny.backendusers.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -10,6 +12,8 @@ public class Purchases {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @JsonIgnore
     private LocalDate date;
 
     @ManyToMany(cascade = CascadeType.REMOVE)
@@ -22,6 +26,7 @@ public class Purchases {
     @JoinTable(name = "PurchasesToUsers",
             joinColumns = @JoinColumn(name = "purchasesId", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "userId", referencedColumnName = "id"))
+    @JsonIgnore
         private List<User> users;
 
     public Purchases() {

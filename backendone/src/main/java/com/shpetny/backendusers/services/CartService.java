@@ -10,8 +10,8 @@ import com.shpetny.backendusers.persistance.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.naming.ldap.PagedResultsControl;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -38,32 +38,43 @@ public class CartService {
         this.userService = userService;
     }
 
-    public void addProduct (Product product,long userId){
+    public void addProduct(Product product, long userId) {
         Cart cart = new Cart(userId);
-        if(cart.getProducts() == null){
+        if (cart.getProducts() == null) {
             cart.setProducts(Arrays.asList(productRepository.findById(product.getId())));
-        }else{
+        } else {
             cart.getProducts().add(productRepository.findById(product.getId()));
         }
         cartRepository.save(cart);
     }
 
-
+    // TODO CHECK THIS
     public void buyAllProduct(long userId, List<Product> products) {
         User user = userService.getUserById(userId);
         Purchases purchases = new Purchases();
-        for (Product product: products){
-            purchases.getProducts().add(service.getProductById(product.getId()));
-        }
+        purchases.setProducts(products);
         purchases.setDate(LocalDate.now());
-        user.getPurchases().add(purchases);
+
+        List<User> users = new ArrayList<>();
+        users.add(user);
+
+        List<Purchases> purchasesList = new ArrayList<>();
+        purchasesList.add(purchases);
+
+
+        purchases.setUsers(users);
+        if (user.getPurchases() == null) {
+            user.setPurchases(purchasesList);
+        } else {
+            user.getPurchases().add(purchases);
+        }
         productService.decrementAmountProducts(products);
         userRepository.save(user);
         purchasesService.addNewPurchases(purchases);
     }
 
 
-    public void deleteProductFromCart(long userId,Product product){
+    public void deleteProductFromCart(long userId, Product product) {
         Product productInput = productService.getProductById(product.getId());
         Cart cart = userService.getUserById(userId).getCart();
         cart.getProducts().remove(productInput);

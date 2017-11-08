@@ -1,5 +1,7 @@
 package com.shpetny.backendusers.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -20,6 +22,7 @@ public class Features {
     @JoinTable(name = "FeaturesToProduct",
             joinColumns = @JoinColumn(name = "featuresId", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "productId", referencedColumnName = "id"))
+    @JsonIgnore
     private List<Product> products;
 
     public Features() {

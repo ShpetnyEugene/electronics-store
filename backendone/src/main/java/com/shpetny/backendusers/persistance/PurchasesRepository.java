@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PurchasesRepository extends CrudRepository<Purchases,Long> {
-    void deleteByUsers(long id);  // TODO
+    void deleteByUsers(long id);
 }

@@ -1,7 +1,5 @@
 package com.shpetny.backendusers.models;
 
-import org.springframework.context.annotation.Lazy;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -19,24 +17,21 @@ public class Product {
     private String description;
     private double rating;
 
-    @ManyToMany(mappedBy = "products",cascade = {CascadeType.DETACH,
-            CascadeType.MERGE,
+    @ManyToMany(mappedBy = "products", cascade = {CascadeType.MERGE,
             CascadeType.REFRESH,
             CascadeType.PERSIST})
     private List<Cart> carts;
 
-    @ManyToMany(mappedBy = "products",cascade = {CascadeType.DETACH,
-            CascadeType.MERGE,
+    @ManyToMany(mappedBy = "products", cascade = {CascadeType.MERGE,
             CascadeType.REFRESH,
             CascadeType.PERSIST})
     private List<Purchases> purchases;
 
     @OneToOne
-    @JoinColumn(name = "id",nullable = false)
+    @JoinColumn(name = "id", nullable = false)
     private ProductType type;
 
-    @ManyToMany(mappedBy = "products",cascade = {CascadeType.DETACH,
-            CascadeType.MERGE,
+    @ManyToMany(mappedBy = "products", cascade = {CascadeType.MERGE,
             CascadeType.REFRESH,
             CascadeType.PERSIST})
     private List<Features> features;

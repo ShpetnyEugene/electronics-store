@@ -27,7 +27,7 @@
                 $.each(data, function (i, f) {
                     var element = "<div style='width:100px' class=" + "col-md-3" + ">" +
                             "<div  class=" + "card h-100" + ">" + "<a href=" + "http://localhost:8091/products/" + f.id + ">" +
-                            "<img class=" + "card-img-top" + " id=" + f.id + " src=" + f.images + " alt=" + ">" + "</a>"
+                            "<img class=" + "image-product" + " id=" + f.id + " src=" + f.images + " alt=" + ">" + "</a>"
                             + "<h4 class=" + "card-title" + ">" + "<div class=" + "card-body" + ">"
                             + "<h4 class=" + "card-title" + ">" +
                             "<a href=" + "http://localhost:8091/products/" + f.id
@@ -35,13 +35,6 @@
                             + "</h4>" + "<h5>" + f.price + "$</h5>" + "<p class=" + "card-text" + ">" + f.description
                             + "</p>" + "</div>"
                             + "<div class=" + "card-footer" + ">"
-                            + " <select id=" + "example" + ">" +
-                            "<option value=" + "1" + ">" + "1" + "</option>" +
-                            "<option value=" + "2" + ">" + "2" + "</option>" +
-                            "<option value=" + "3" + ">" + "3" + "</option>" +
-                            "<option value=" + "4" + ">" + "4" + "</option>" +
-                            "<option value=" + "5" + ">" + "5" + "</option>" +
-                            "</select>"
                             + "<button id=" + f.id + " type=" + "button" + " onclick=" + "buy(this)" + "> Add to Cart" + "</button>"
                             + "</div>" + "</div>" + "</div>";
 

@@ -33,6 +33,7 @@
             },
             complete: function (data) {
                 if(data){
+                    addCart();
                     window.location.href = "/home";
                 }else {
                     clearForm();
@@ -44,6 +45,34 @@
             }
         });
     }
+    function addCart() {
+        if(sessionStorage.length !== 0){
+            var values = [],
+                    keys = Object.keys(sessionStorage),
+                    i = keys.length;
+            while (i--) {
+                values.push(sessionStorage.getItem(keys[i]));
+            }
+            var formData = values;
+            var myURL = 'http://localhost:8090/users/cart';
+            $.ajax({
+                type: "POST",
+                data: JSON.stringify(formData),
+                xhrFields: {
+                    withCredentials: true
+                },
+                url: myURL,
+                dataType: 'json',
+                contentType: 'application/json',
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(thrownError)
+                }
+            });
+        }
+    }
+
+
+
 
 
     function clearForm() {
