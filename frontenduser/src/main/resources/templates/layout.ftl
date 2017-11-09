@@ -69,21 +69,21 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="/products">Catalog<span class="sr-only">(current)</span></a></li>
-                <li><a href="/users/purchases" onclick="sendPurchases()">Purchases<span class="sr-only">(current)</span></a></li>
                 <li><a href="http://localhost:8099/admin/login">Admin<span class="sr-only">(current)</span></a></li>
-                <li><input id="template-custom" style="width: 500px"/></li>
+                <li>
+                    <form class="navbar-form ">
+                        <input class="form-group form-control" id="template-custom" style="width: 500px"/>
+                    </form>
+                </li>
             </ul>
 
 
             <ul class="nav navbar-nav navbar-right">
-                <button class="btn btn-primary" type="button"><a href="/users/cart"><span class="badge" id="cart">
-
-                </span></a>
-                <#--<span class="badge"></span>-->
-                </button>
+                <li><a href="/users/cart"><span class="badge" id="cart">
+                </span></a></li>
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -126,24 +126,6 @@
         });
     }
 
-
-    function sendPurchases() {
-        var myURL = 'http://localhost:8090/users/purchases';
-        $.ajax({
-            type: "GET",
-            url: myURL,
-            xhrFields: {
-                withCredentials: true
-            },
-            complete: function () {
-                window.location.href = "/users/purchases";
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                console.log(thrownError)
-            }
-        });
-    }
-
     var options = {
         url: "http://localhost:8090/search",
         getValue: "name",
@@ -161,7 +143,6 @@
     };
 
     $("#template-custom").easyAutocomplete(options);
-    //    <span class="badge"></span>
     $('<span class="badge">Cart ' + sessionStorage.length + '</span>').appendTo('#cart')
 
 </script>

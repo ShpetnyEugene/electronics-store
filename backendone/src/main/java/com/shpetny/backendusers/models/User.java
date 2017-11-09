@@ -18,12 +18,6 @@ public class User {
     @JoinColumn(name = "id",nullable = false)
     private Cart cart;
 
-    @ManyToMany(mappedBy = "users",cascade = {CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.REFRESH,
-            CascadeType.PERSIST})
-    private List<Purchases> purchases;
-
     public User() {
     }
 
@@ -48,13 +42,6 @@ public class User {
         this.cart = cart;
     }
 
-    public List<Purchases> getPurchases() {
-        return purchases;
-    }
-
-    public void setPurchases(List<Purchases> purchases) {
-        this.purchases = purchases;
-    }
 
     public String getLogin() {
         return login;

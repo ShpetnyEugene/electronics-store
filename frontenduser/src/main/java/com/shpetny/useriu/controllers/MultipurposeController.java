@@ -13,46 +13,44 @@ public class MultipurposeController {
     private String string;
 
     @GetMapping("/home")
-    public String showHomePage() {
+    public String showHomePage(Model model) {
+        model.addAttribute("backendUrl", string);
         return "home";
     }
 
-    // Вход в систему
     @GetMapping("/users/login")
     public String showLoginPage(Model model) {
         model.addAttribute("url", string);
         return "login";
     }
 
-    // Корзина покупок
     @GetMapping("/users/cart")
     public String showCartPage() {
         return "cart";
     }
 
-    // Регистрация
+
     @GetMapping("/users/registration")
     public String showRegistrationPage(Model model) {
         model.addAttribute("backendUrl", string);
         return "registration";
     }
 
-    // Список всех товаров
     @GetMapping("/products")
-    public String showProductsPage() {
+    public String showProductsPage(Model model) {
+        model.addAttribute("backendUrl",string);
         return "products";
     }
 
-    // История покупок
     @GetMapping("/users/purchases")
     public String showPurchasesPage() {
         return "purchases";
     }
 
-    // Показать определенный продукт
     @GetMapping("/products/{productName}")
     public String showDefiniteProductsPage(@PathVariable String productName, Model model) {
         model.addAttribute("productName", productName);
+        model.addAttribute("backendUrl", string);
         return "product";
     }
 

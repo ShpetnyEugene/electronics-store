@@ -30,7 +30,6 @@ public class FeaturesAllController {
 
     @GetMapping
     public Map<String, List<Features>> getFeaturesByProduct() {
-
         List<Features> features = featuresService.getAllFeatures();
         Map<String, List<Features>> map = new HashMap<>();
         features.forEach(feature -> {
@@ -48,10 +47,10 @@ public class FeaturesAllController {
     public List<ProductView> findProduct(@RequestParam String features) {
         String[] strings = features.split(",");
         List<Features> featuresList = new ArrayList<>();
-        String[] srf;
+        String[] featureNameAndValue;
         for (String string : strings) {
-            srf = string.split("=");
-            featuresList.add(new Features(srf[0], srf[1]));
+            featureNameAndValue = string.split("=");
+            featuresList.add(new Features(featureNameAndValue[0], featureNameAndValue[1]));
         }
         return productViewService.buildingPriceView(productService.getProducts(featuresService.getFeaturesByValues(featuresList)));
     }

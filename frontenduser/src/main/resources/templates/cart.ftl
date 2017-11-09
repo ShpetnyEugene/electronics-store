@@ -13,7 +13,7 @@
 </div>
 
 <center>
-    <button onclick="buyAll()">Buy All</button>
+    <button class='btn btn-default' onclick="buyAll()">Buy All</button>
 </center>
 
 
@@ -37,7 +37,7 @@
                     + "</h4>" + "<h5>" + data.price + "$</h5>" + "<p class=" + "card-text" + ">" + data.description
                     + "</p>" + "</div>"
                     + "<div class=" + "card-footer" + ">"
-                   + "<button id=" + data.id + " type=" + "button" + " onclick=" + "deleteFromCart(this)" + "> Delete from cart" + "</button>"
+                   + "<button class='btn btn-default' id=" + data.id + " type=" + "button" + " onclick=" + "deleteFromCart(this)" + "> Delete from cart" + "</button>"
                     + "</div>" + "</div>" + "</div>";
             cost = cost + parseInt(data.price);
             $(element).appendTo("#products-container");
@@ -72,7 +72,7 @@
                         + "</h4>" + "<h5>" + data.price + "$</h5>" + "<p class=" + "card-text" + ">" + data.description
                         + "</p>" + "</div>"
                         + "<div class=" + "card-footer" + ">"
-                        +"<button id=" + data.id + " type=" + "button" + " onclick=" + "deleteFromCart(this)" + "> Delete from cart" + "</button>"
+                        +"<button class='btn btn-default' id=" + data.id + " type=" + "button" + " onclick=" + "deleteFromCart(this)" + "> Delete from cart" + "</button>"
                         + "</div>" + "</div>" + "</div>";
                 cost = cost + parseInt(data.price);
                 $(element).appendTo("#products-container");

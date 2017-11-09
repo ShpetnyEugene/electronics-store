@@ -17,6 +17,12 @@ public class AdminController {
     private final TypeViewService typeViewService;
     private final ProductService service;
 
+    @Autowired
+    public AdminController(ProductService service, TypeViewService typeViewService) {
+        this.service = service;
+        this.typeViewService = typeViewService;
+    }
+
     /**
      * This method return all products from database
      *
@@ -25,13 +31,6 @@ public class AdminController {
     @GetMapping
     public List<Product> getAllPrice() {
         return service.getAllProduct();
-    }
-
-
-    @Autowired
-    public AdminController(ProductService service, TypeViewService typeViewService) {
-        this.service = service;
-        this.typeViewService = typeViewService;
     }
 
     /**

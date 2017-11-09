@@ -6,9 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -18,7 +16,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @version 1.0
  */
 @SpringBootApplication
-@ComponentScan({"com.shpetny.backendusers.services","com.shpetny.adminspanel.controllers"})
+@ComponentScan({"com.shpetny.backendusers.services", "com.shpetny.adminspanel.controllers"})
 @EnableJpaRepositories("com.shpetny.backendusers.persistance")
 @EntityScan("com.shpetny.backendusers.models")
 public class Application {
@@ -44,7 +42,7 @@ public class Application {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**").
                         allowedOrigins(backendUserUrl,
-                                frontedAdminUrl,"*",frontedUserUrl)
+                                frontedAdminUrl, "*", frontedUserUrl)
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD");
             }
         };

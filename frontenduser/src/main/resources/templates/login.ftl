@@ -71,10 +71,6 @@
         }
     }
 
-
-
-
-
     function clearForm() {
         var inputList = document.getElementsByTagName("input");
         for (i = 0; i < inputList.length; i++) {

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 public class LogoutController {
 
     @GetMapping
-    public void logoutUser(HttpSession httpSession){
+    public void logoutUser(HttpSession httpSession) {
         httpSession.removeAttribute("userId");
     }
 }

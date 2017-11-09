@@ -6,13 +6,8 @@ import com.shpetny.backendusers.persistance.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class UserService {
-
-//    @Autowired
-//    private PurchaseService purchaseService;
 
     private final UserRepository repository;
 
@@ -27,10 +22,6 @@ public class UserService {
         repository.save(user);
     }
 
-    public List<User> getAllUsers() {
-        return (List<User>) repository.findAll();
-    }
-
     public User getByLogin(String login) {
         return repository.findByLogin(login);
     }
@@ -39,7 +30,7 @@ public class UserService {
         return repository.findByLoginAndPassword(login, password) != null;
     }
 
-    public User getUserById(long id){
+    public User getUserById(long id) {
         return repository.findById(id);
     }
 
@@ -47,12 +38,4 @@ public class UserService {
         User user = repository.findByLoginAndPassword(login, password);
         return user != null && user.getRole() == Role.ADMIN;
     }
-
-    public void deletePurchases(long id){
-//        User user = getUserById(id); // TODO REMOVE BY ID
-//        user.setPurchases(null);
-//        purchaseService.deleteUserFromPurchases(id);
-//        repository.save(user);
-    }
-
 }

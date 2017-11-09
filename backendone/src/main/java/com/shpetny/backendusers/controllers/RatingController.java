@@ -23,8 +23,8 @@ public class RatingController {
     }
 
     @PostMapping
-    public double updateRatingInProduct(@RequestBody Product product){
-        ratingService.updateRating(product.getId(),product.getRating());
+    public double updateRatingInProduct(@RequestBody Product product) {
+        ratingService.updateRating(product.getId(), product.getRating());
         return productService.getProductById(product.getId()).getRating();
     }
 }

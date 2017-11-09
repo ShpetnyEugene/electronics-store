@@ -1,7 +1,11 @@
 package com.shpetny.backendusers.controllers;
 
-import com.shpetny.backendusers.models.*;
-import com.shpetny.backendusers.services.*;
+import com.shpetny.backendusers.models.Product;
+import com.shpetny.backendusers.models.ProductView;
+import com.shpetny.backendusers.services.CartService;
+import com.shpetny.backendusers.services.ProductService;
+import com.shpetny.backendusers.services.ProductViewService;
+import com.shpetny.backendusers.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,53 +20,49 @@ public class CartController {
 
     private final UserService userService;
     private final CartService cartService;
-    private final PurchasesService purchasesService;
     private final ProductViewService service;
     private final ProductService productService;
 
     @Autowired
-    public CartController(CartService cartService, UserService userService, PurchasesService purchasesService, ProductViewService service, ProductService productService) {
+    public CartController(CartService cartService, UserService userService, ProductViewService service, ProductService productService) {
         this.cartService = cartService;
         this.userService = userService;
-        this.purchasesService = purchasesService;
         this.service = service;
         this.productService = productService;
     }
 
     @GetMapping
-    public ProductView getProductById(@RequestParam("id") long id){
+    public ProductView getProductById(@RequestParam("id") long id) {
         Product product = productService.getProductById(id);
         return service.buildingPriceView((Arrays.asList(product))).get(0);
     }
 
-    // TODO CHECK THIS
-    @PostMapping
-    public void addProduct(@RequestBody Product product, HttpSession session){
-        if(session.getAttribute("userId") != null){
-            long userId = (long) session.getAttribute("userId"); // TODO
-            cartService.addProduct(product,userId);
+    public void addProduct(@RequestBody Product product, HttpSession session) {
+        if (session.getAttribute("userId") != null) {
+            long userId = (long) session.getAttribute("userId");
+            cartService.addProduct(product, userId);
         }
     }
 
     @PutMapping
-    public void buyAllProduct(HttpSession session,@RequestBody List<Long> products ){
+    public void buyAllProduct(HttpSession session, @RequestBody List<Long> products) {
         List<Product> products1 = new ArrayList<>();
-        for(Long lo : products){
+        for (Long lo : products) {
             products1.add(productService.getProductById(lo));
         }
-        if(session.getAttribute("userId") != null){
-            long userId = (long) session.getAttribute("userId"); // TODO
-            cartService.buyAllProduct(userId,products1);
-        }else{
+        if (session.getAttribute("userId") != null) {
+            long userId = (long) session.getAttribute("userId");
+            cartService.buyAllProduct(userId, products1);
+        } else {
             productService.decrementAmountProducts(products1);
         }
     }
 
     @DeleteMapping
-    public void deleteProductFromCart(@RequestBody Product product,HttpSession session){
-        if(session.getAttribute("userId") != null){
-            long userId = (long) session.getAttribute("userId"); // TODO
-            cartService.deleteProductFromCart(userId,product);
+    public void deleteProductFromCart(@RequestBody Product product, HttpSession session) {
+        if (session.getAttribute("userId") != null) {
+            long userId = (long) session.getAttribute("userId");
+            cartService.deleteProductFromCart(userId, product);
         }
     }
 }

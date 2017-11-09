@@ -23,7 +23,9 @@
 <script>
 
     $.getJSON("http://localhost:8090/home", function (data) {
+
                 $("#products-container").empty();
+                $.fn.raty.defaults.path = '/resources/assets/raty/images';
                 $.each(data, function (i, f) {
                     var element = "<div style='width:100px' class=" + "col-md-3" + ">" +
                             "<div  class=" + "card h-100" + ">" + "<a href=" + "http://localhost:8091/products/" + f.id + ">" +
@@ -32,20 +34,48 @@
                             + "<h4 class=" + "card-title" + ">" +
                             "<a href=" + "http://localhost:8091/products/" + f.id
                             + " name=" + f.name + " id=" + f.id + ">" + f.name + "</a>"
+                            + "<div id=stars" + f.id + "> </div>"
                             + "</h4>" + "<h5>" + f.price + "$</h5>" + "<p class=" + "card-text" + ">" + f.description
                             + "</p>" + "</div>"
                             + "<div class=" + "card-footer" + ">"
-                            + "<button id=" + f.id + " type=" + "button" + " onclick=" + "buy(this)" + "> Add to Cart" + "</button>"
+                            + "<button class='btn btn-default' id=" + f.id + " type=" + "button" + " onclick=" + "buy(this)" + "> Add to Cart" + "</button>"
                             + "</div>" + "</div>" + "</div>";
 
                     $(element).appendTo("#products-container");
+
+                    $('#stars' + f.id).raty({
+                        score: f.rating,
+                        click: function (score, event) {
+                            var myURL = '${backendUrl}/rating';
+                            var dataRating = {};
+                            dataRating['rating'] = score;
+                            dataRating['id'] = f.id;
+                            $.ajax({
+                                type: "POST",
+                                data: JSON.stringify(dataRating),
+                                url: myURL,
+                                dataType: 'json',
+                                contentType: 'application/json',
+                                complete: function (res) {
+                                    $('stars').raty({
+                                        score: res.responseJSON
+                                    })
+                                },
+                                error: function (xhr, ajaxOptions, thrownError) {
+                                    console.log(thrownError)
+                                }
+                            });
+                        }
+                    });
+
                 });
             }
     );
-    // TODO
     function buy(obj) {
         sessionStorage.setItem(obj.id, obj.id);
         var formData = {};
+        $('#cart').empty();
+        $('<span class="badge">Cart ' + sessionStorage.length + '</span>').appendTo("#cart");
         formData['id'] = obj.id;
 
         var myURL = 'http://localhost:8090/users/cart';

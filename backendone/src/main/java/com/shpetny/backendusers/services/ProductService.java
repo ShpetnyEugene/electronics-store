@@ -7,10 +7,7 @@ import com.shpetny.backendusers.persistance.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class ProductService {
@@ -58,7 +55,6 @@ public class ProductService {
         return productViewService.buildingPriceView(new ArrayList<>(products));
     }
 
-    // TODO УДАЛЕНИЕ ПРАВИЛЬНОЕ
     public void deleteProductById(long id) {
         productRepository.delete(id);
     }
@@ -76,9 +72,20 @@ public class ProductService {
 
 
 
-    public List<Product> getProducts(List<Features> features){
+    public List<Product> sortByRating(List<Product> products){
+
+        Collections.sort(products,new Comparator<Product>(){
+            @Override
+            public int compare(Product o1, Product o2) {
+                return Double.compare(o1.getRating(),o2.getRating());
+            }
+        });
+        return  products;
+    }
+
+    public List<Product> getProducts(List<Features> features) {
         List<Long> ids = new ArrayList<>();
-        for (Features features1: features){
+        for (Features features1 : features) {
             ids.add(features1.getId());
         }
         return productRepository.getProduct(ids);

@@ -22,10 +22,6 @@ public class Product {
             CascadeType.PERSIST})
     private List<Cart> carts;
 
-    @ManyToMany(mappedBy = "products", cascade = {CascadeType.MERGE,
-            CascadeType.REFRESH,
-            CascadeType.PERSIST})
-    private List<Purchases> purchases;
 
     @OneToOne
     @JoinColumn(name = "id", nullable = false)

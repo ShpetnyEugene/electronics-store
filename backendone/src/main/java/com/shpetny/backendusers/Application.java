@@ -36,3 +36,26 @@ public class Application {
         };
     }
 }
+
+
+/**
+ * <Service name="foo">
+ <Connector port="80" protocol="org.apache.coyote.http11.Http11NioProtocol" />
+ <Engine name="Catalina80" defaultHost="localhost">
+ <Host name="localhost" appBase="foo" unpackWARs="true" autoDeploy="true" />
+ </Engine>
+ </Service>
+
+ <Service name="bar">
+ <Connector port="81" protocol="org.apache.coyote.http11.Http11NioProtocol" />
+ <Engine name="Catalina81" defaultHost="localhost">
+ <Host name="localhost" appBase="bar" unpackWARs="true" autoDeploy="true" />
+ </Engine>
+ </Service>
+
+ Также создать дв папки с именами артефактов и оба ROOT.war
+
+
+ The root application won't receive requests that match other applications, e.g. /foo/example will go to foo.war, /example/example will go to ROOT.war
+ *
+ * */

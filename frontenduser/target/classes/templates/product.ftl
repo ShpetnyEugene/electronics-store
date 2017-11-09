@@ -12,6 +12,7 @@
             </div>
             <div id="stars">
             </div>
+            <button class="btn btn-default" onclick="buy(this)">Add to cart</button>
         </div>
     </div>
 
@@ -20,12 +21,13 @@
         $.fn.raty.defaults.path = '/resources/assets/raty/images';
 
         var element;
-        function addCart(data) {
-            sessionStorage.setItem(data.id, data.id);
+        function buy(obj) {
+            sessionStorage.setItem(obj.id, obj.id);
             var formData = {};
             formData['id'] = obj.id;
-
-            var myURL = 'http://localhost:8090/users/cart';
+            $('#cart').empty();
+            $('<span class="badge">Cart ' + sessionStorage.length + '</span>').appendTo("#cart");
+            var myURL = '${backendUrl}/users/cart';
             $.ajax({
                 type: "POST",
                 data: JSON.stringify(formData),
@@ -77,30 +79,8 @@
                 $.each(features, function (i, f) {
                     element = element + "<h4>" + f.name + " : " + f.value + "</h4>"
                 });
-
-
                 $(element).appendTo("#products-container");
             });
-
-//            $('#stars').raty({
-//                score: data.rating,
-//                click: function (score,event) {
-//                    $.ajax({
-//                        type: "POST",
-//                        data: JSON.stringify(score),
-//                        xhrFields: {
-//                            withCredentials: true
-//                        },
-//                        url: myURL,
-//                        dataType: 'json',
-//                        contentType: 'application/json',
-//                        error: function (xhr, ajaxOptions, thrownError) {
-//                            console.log(thrownError)
-//                        }
-//                    });
-//
-//                }
-//            });
 
         });
     </script>

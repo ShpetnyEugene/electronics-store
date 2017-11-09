@@ -7,12 +7,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class RatingService {
 
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
 
-    public void updateRating(long productId,double rating){
+    @Autowired
+    public RatingService(ProductService productService) {
+        this.productService = productService;
+    }
+
+    public void updateRating(long productId, double rating) {
         Product product = productService.getProductById(productId);
-        product.setRating((product.getRating() + rating)/2);
+        product.setRating((product.getRating() + rating) / 2);
         productService.updateProduct(product);
     }
 }

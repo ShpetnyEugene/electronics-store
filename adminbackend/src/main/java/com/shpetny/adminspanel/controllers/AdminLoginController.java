@@ -31,7 +31,6 @@ public class AdminLoginController {
     @ResponseBody
     @PostMapping
     public boolean login(@RequestBody User user, HttpServletRequest request) {
-        // TODO Check
         if (userService.checkUserByLoginPasswordRole(user.getLogin(), user.getPassword())) {
             UserDetails userDetails = userDetailsService.loadUserByUsername(user.getLogin());
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());

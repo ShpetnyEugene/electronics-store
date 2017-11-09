@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class TypeViewService {
 
+    private static final long ID = 1L;
+
     private final TypeRepository typeRepository;
 
     @Autowired
@@ -16,12 +18,12 @@ public class TypeViewService {
     }
 
     public Type getType() {
-        return typeRepository.findOne(1L);
+        return typeRepository.findOne(ID);
     }
 
-    public void updateType(int type){
+    public void updateType(int type) {
         Type type1 = new Type(type);
-        type1.setId(1);
+        type1.setId(ID);
         typeRepository.save(type1);
     }
 }
